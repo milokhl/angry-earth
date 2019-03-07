@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 2e0aaac53ccd59a418e9bc5cec0dad5c
+guid: e9504324585e46e49835792ad635570d
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: TreeTerrain
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -41,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1660
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -94,31 +93,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: TreeTerrain
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 552
-        width: 100
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6869a4744f050c941a014f244ee560f8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f1ee00144175cc04f9725ac89deef194
+    spriteID: 94462681501bb194daf683b6afb2dc85
     vertices: []
     indices: 
     edges: []

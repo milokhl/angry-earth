@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour {
             float tileCenterDeg = (float)i * tileDeg - 90.0f;
             float tileCenterRad = (float)i * tileRad;
 
+            // Instantiate the tile and retrieve its TileManager script.
             GameObject tile = Instantiate(tilePrefab);
             TileManager manager = tile.GetComponent<TileManager>();
 
             // We want to scale the tile width so that it takes up all of the available arc length.
+            // This allows us to instantiate the tile without knowing about the units / px of the sprite.
             float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
             float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
             float tileScaleFactor = tileArcLength / spriteWidth;
@@ -38,7 +40,6 @@ public class GameManager : MonoBehaviour {
             tile.transform.position = tilePos;
             tile.transform.rotation = tileRot;
 
-            // GameObject tile = Instantiate(tilePrefab, tilePos, tileRot);
             tiles_.Add(manager);
         }
 
