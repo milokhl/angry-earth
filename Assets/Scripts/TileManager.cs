@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TileManager : MonoBehaviour {
-    public string terrainType = "TreeTerrain";
-
     private bool isHighlighted = false;
+    private Behaviour halo = null;
     
     // Hightlight or unhighlight a tile.
     public void Highlight(bool on)
@@ -16,13 +15,17 @@ public class TileManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
+        // For now, the Halo component is what's used for highlighting.
+        // We might want to change this later on.
+        halo = (Behaviour)GetComponent("Halo");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Behaviour h = (Behaviour)GetComponent("Halo");
-        h.enabled = isHighlighted; 
+        if (halo != null) {
+            halo.enabled = isHighlighted;
+        }
     }
 
     // Access the sprite that is being rendered for this tile.
