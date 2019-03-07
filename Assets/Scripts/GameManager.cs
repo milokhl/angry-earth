@@ -18,9 +18,32 @@ public class GameManager : MonoBehaviour {
     // Each Tile prefab has a TileManager script attached.
     // We store them all here to manipulate the tile later.
     private List<TileManager> tiles_ = new List<TileManager>();
+    private TileManager activeTile = null;
 
     // Start is called before the first frame update
     void Start()
+    {
+        InitializeTiles();
+    }
+
+    void Update()
+    {
+        // if (Input.GetMouseButtonDown(0)) {
+        Vector2 mousePos = Input.mousePosition;
+
+        // The mouse position is in screen pixel coordinates, and we need to
+        // center it relative to the world.
+        Vector2 centeredPos = mousePos - 0.5f * new Vector2(Screen.width, Screen.height);
+        TileManager active = GetActiveTile(centeredPos.x, centeredPos.y);
+
+        if (activeTile != null) {
+            activeTile.Highlight(false); // Turn off previously active tile.
+        }
+        activeTile = active;
+        activeTile.Highlight(true);
+    }
+
+    private void InitializeTiles()
     {
         // Tile angular width in degrees and radians.
         float tileDeg = 360.0f / numTiles;
@@ -53,8 +76,28 @@ public class GameManager : MonoBehaviour {
 
             tiles_.Add(manager);
         }
-
     }
 
-    
+    // Get the tile that is 'active' given the current angular mouse location.
+    TileManager GetActiveTile(float x, float y)
+    {
+        float tileRad = 2.0f * Mathf.PI / numTiles;
+        float theta = Mathf.Atan2(y, x);
+
+        // Atan2 maps angles between [-Pi, Pi]. For the math below to work, we
+        // want to map these angles from 0 to 2PI.
+        if (theta < 0) { theta = 2*Mathf.PI + theta; }
+
+        int below = (int)Mathf.Floor(theta / tileRad);
+        int above = (below + 1) % numTiles;
+
+        float belowDelta = (theta - (float)below * tileRad);
+        float aboveDelta = (float)above * tileRad - theta;
+
+        // Note: need to handle the wraparound case here where above = 0 and below = 35.
+        if (aboveDelta < 0) { aboveDelta = 2.0f * Mathf.PI + aboveDelta; }
+
+        int closest_idx = (belowDelta <= aboveDelta) ? below : above;
+        return tiles_[closest_idx];
+    }
 }

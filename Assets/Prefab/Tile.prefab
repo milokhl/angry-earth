@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 691111528797436572}
   - component: {fileID: 4566604671222795680}
   - component: {fileID: 4452246939919475960}
+  - component: {fileID: 6252347152314100907}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -93,3 +94,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainType: TreeTerrain
+--- !u!122 &6252347152314100907
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475345692572533441}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 0.5
