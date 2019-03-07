@@ -8,16 +8,14 @@ public class TileManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        // terrainSprite = Resources.Load<Sprite>(terrainType);
-        // GetComponent<SpriteRenderer>().sprite = terrainSprite;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
+    // Access the sprite that is being rendered for this tile.
     public Sprite GetSprite()
     {
         return GetComponent<SpriteRenderer>().sprite;

@@ -3,9 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    // I decided to hardcode the earthRadius, since we probably just want to settle
+    // on a single value and stick with it. Making it a configurable param can lead
+    // to some annoying gotchas where the Unity editor has a different value than the
+    // one in here.
     private float earthRadius = 5.0f;
+
+    // The number of tiles on earth's surface.
     public int numTiles = 36;
+
+    // All tiles are instantiated from the 'Tile' prefab in Prefab folder.
     public GameObject tilePrefab;
+
+    // Each Tile prefab has a TileManager script attached.
+    // We store them all here to manipulate the tile later.
     private List<TileManager> tiles_ = new List<TileManager>();
 
     // Start is called before the first frame update
