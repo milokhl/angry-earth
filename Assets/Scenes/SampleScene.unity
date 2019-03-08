@@ -309,6 +309,8 @@ MonoBehaviour:
   numTiles: 36
   tilePrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
     type: 3}
+  disasterPrefab: {fileID: 5811893257631671531, guid: e21566dad4bd844a884953a0ac96be0a,
+    type: 3}
 --- !u!1 &1670165960
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,15 +20,17 @@ public class GameManager : MonoBehaviour {
     private List<TileManager> tiles_ = new List<TileManager>();
     private TileManager activeTile = null;
 
+    public GameObject disasterPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        InitializeTiles();
+        InitializeTiles(); 
+
     }
 
     void Update()
     {
-        // if (Input.GetMouseButtonDown(0)) {
         Vector2 mousePos = Input.mousePosition;
 
         // The mouse position is in screen pixel coordinates, and we need to
@@ -41,6 +43,13 @@ public class GameManager : MonoBehaviour {
         }
         activeTile = active;
         activeTile.Highlight(true);
+
+        //if the mouse button is held down, create a disaster in the correct section
+        if (Input.GetMouseButtonDown(0))
+        {
+            int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
+            PlaceDisaster(activeI);
+        }
     }
 
     private void InitializeTiles()
@@ -99,5 +108,62 @@ public class GameManager : MonoBehaviour {
 
         int closest_idx = (belowDelta <= aboveDelta) ? below : above;
         return tiles_[closest_idx];
+    }
+
+    //place a disaster in the given i section
+    private void PlaceDisaster(int i)
+    {
+        // Disaster angular width in degrees and radians.
+        float disDeg = 360.0f / numTiles;
+        float disRad = disDeg * Mathf.PI / 180.0f;
+        float disArcLength = disRad * earthRadius;
+
+        float disCenterDeg = (float)i * disDeg - 90.0f;
+        float disCenterRad = (float)i * disRad;
+
+        // Instantiate the disaster and retrieve its DisasterManager script.
+        GameObject disaster = Instantiate(disasterPrefab);
+        DisasterManager manager = disaster.GetComponent<DisasterManager>();
+
+        float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
+        float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
+        float disScaleFactor = disArcLength / spriteWidth;
+
+        // Rotate, translate, and scale the disaster so that it is above the edge of the earth.
+        // Quaternion.Euler expects degrees!
+        Quaternion tileRot = Quaternion.Euler(0, 0, disCenterDeg);
+
+        // Move the disaster radially outward by earthRadius.
+        Vector3 disNormal = new Vector3(Mathf.Cos(disCenterRad), Mathf.Sin(disCenterRad), 0.0f);
+
+        //May need to change the position and scaling factor depending on the actual
+        //size of the sprite
+        Vector3 disPos = (earthRadius + 1.0f * spriteHeight) * disNormal;
+        disaster.transform.localScale = Vector3.one * disScaleFactor*2.0f;
+        disaster.transform.position = disPos;
+        disaster.transform.rotation = tileRot;
+    }
+
+    //get the index of the active tile
+    private int GetActiveIndex(float x, float y)
+    {
+        float tileRad = 2.0f * Mathf.PI / numTiles;
+        float theta = Mathf.Atan2(y, x);
+
+        // Atan2 maps angles between [-Pi, Pi]. For the math below to work, we
+        // want to map these angles from 0 to 2PI.
+        if (theta < 0) { theta = 2 * Mathf.PI + theta; }
+
+        int below = (int)Mathf.Floor(theta / tileRad);
+        int above = (below + 1) % numTiles;
+
+        float belowDelta = (theta - (float)below * tileRad);
+        float aboveDelta = (float)above * tileRad - theta;
+
+        // Note: need to handle the wraparound case here where above = 0 and below = 35.
+        if (aboveDelta < 0) { aboveDelta = 2.0f * Mathf.PI + aboveDelta; }
+
+        int closest_idx = (belowDelta <= aboveDelta) ? below : above;
+        return closest_idx;
     }
 }
