@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 693450553}
   - component: {fileID: 693450552}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Toolbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

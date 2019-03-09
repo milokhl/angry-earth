@@ -21,12 +21,25 @@ public class GameManager : MonoBehaviour {
     private TileManager activeTile = null;
 
     public GameObject disasterPrefab;
+    // Player state.
+    private List<ButtonController> disasterButtons_;
 
     // Start is called before the first frame update
     void Start()
     {
-        InitializeTiles(); 
+        InitializeTiles();
 
+        Transform toolbar = transform.Find("Toolbar");
+
+        Transform lightning = transform.Find("LightningButton");
+        Transform sandstorm = toolbar.Find("SandstormButton");
+        Transform tsunami = toolbar.Find("TsunamiButton");
+        Transform earthquake = toolbar.Find("EarthquakeButton");
+
+        disasterButtons_.Add(lightning.gameObject.GetComponent<ButtonController>());
+        disasterButtons_.Add(sandstorm.gameObject.GetComponent<ButtonController>());
+        disasterButtons_.Add(tsunami.gameObject.GetComponent<ButtonController>());
+        disasterButtons_.Add(earthquake.gameObject.GetComponent<ButtonController>());
     }
 
     void Update()
