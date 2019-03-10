@@ -21,12 +21,26 @@ public class GameManager : MonoBehaviour {
     private TileManager activeTile = null;
 
     public GameObject disasterPrefab;
+    
+    // Player state.
+
+    // The currently clicked disaster type.
+    private DisasterType selectedDisaster = DisasterType.NotSelected;
+
+    // Every time a button in the toolbar is clicked, it calls this method
+    // with its DisasterType (see DisasterManager.cs)
+    public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
+    {
+        Debug.Log("Clicked on disaster: " + type);
+        selectedDisaster = type;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        InitializeTiles(); 
+        InitializeTiles();
 
+        Transform toolbar = transform.Find("Toolbar");
     }
 
     void Update()
@@ -113,6 +127,11 @@ public class GameManager : MonoBehaviour {
     //place a disaster in the given i section
     private void PlaceDisaster(int i)
     {
+        // Don't place anything if no disaster selected.
+        if (selectedDisaster == DisasterType.NotSelected) {
+            return;
+        }
+
         // Disaster angular width in degrees and radians.
         float disDeg = 360.0f / numTiles;
         float disRad = disDeg * Mathf.PI / 180.0f;
@@ -124,6 +143,7 @@ public class GameManager : MonoBehaviour {
         // Instantiate the disaster and retrieve its DisasterManager script.
         GameObject disaster = Instantiate(disasterPrefab);
         DisasterManager manager = disaster.GetComponent<DisasterManager>();
+        manager.SetType(selectedDisaster);
 
         float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
         float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
