@@ -36,6 +36,8 @@ public class ButtonController : MonoBehaviour
     public void Unlock() { isUnlocked = true; }
     public void Lock() { isUnlocked = false; }
 
+    // Decrements the countdown timer and re-enables the button
+    // when it hits zero.
     void FixedUpate()
     {
         if (countdown > 0.0f) {
