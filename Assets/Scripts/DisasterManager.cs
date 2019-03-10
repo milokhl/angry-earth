@@ -15,47 +15,71 @@ public enum DisasterType
     ForestFire
 };
 
+// Defines all of the behavior of the disaster.
+public struct DisasterInfo
+{
+    public float damage;            // The damage that this disaster subtracts from health.
+    public float cooldownTime;      // Seconds.
+    public float altitude;          // For positioning disaster above the earth surface.
+    public string spriteFile;       // Filename (not including directory).
+};
+
 public class DisasterManager : MonoBehaviour
 {
-    // Map each DisasterType to a damage amount.
-    public Dictionary<DisasterType, float> Damages = new Dictionary<DisasterType, float> {
-        {DisasterType.Thunderstorm, 10.0f},
-        {DisasterType.Sandstorm, 5.0f},
-        {DisasterType.Earthquake, 12.0f},
-        {DisasterType.Tsunami, 6.0f},
-        {DisasterType.ForestFire, 7.0f}
-    };
+    private string spritePath = "Sprites/Placeholders/";
 
-    // Map each DisasterType to a cooldown time.
-    public Dictionary<DisasterType, float> CooldownTimes = new Dictionary<DisasterType, float> {
-        {DisasterType.Thunderstorm, 10.0f},
-        {DisasterType.Sandstorm, 5.0f},
-        {DisasterType.Earthquake, 12.0f},
-        {DisasterType.Tsunami, 6.0f},
-        {DisasterType.ForestFire, 7.0f}
-    };
-
-    // Stores the filename of the sprite used for each disaster type.
-    public Dictionary<DisasterType, string> SpriteFiles = new Dictionary<DisasterType, string> {
-        {DisasterType.Thunderstorm, "Sprites/Placeholders/TransparentLightning"},
-        {DisasterType.Sandstorm, "Sprites/Placeholders/TransparentSandstorm"},
-        {DisasterType.Earthquake, "Sprites/Placeholders/TransparentLightning"},
-        {DisasterType.Tsunami, "Sprites/Placeholders/TransparentLightning"},
-        {DisasterType.ForestFire, "Sprites/Placeholders/TransparentFire"}
+    public Dictionary<DisasterType, DisasterInfo> Info = new Dictionary<DisasterType, DisasterInfo>
+    {
+        {DisasterType.Thunderstorm,
+            new DisasterInfo {
+                damage = 10.0f,
+                cooldownTime=10.0f,
+                altitude=1.0f,
+                spriteFile="TransparentLightning"}
+            },
+        {DisasterType.Sandstorm,
+            new DisasterInfo {
+                damage = 10.0f,
+                cooldownTime=10.0f,
+                altitude=1.0f,
+                spriteFile="TransparentSandstorm"}
+            },
+        {DisasterType.Earthquake,
+            new DisasterInfo {
+                damage = 10.0f,
+                cooldownTime=10.0f,
+                altitude=1.0f,
+                spriteFile="TransparentLightning"}
+            },
+        {DisasterType.Tsunami,
+            new DisasterInfo {
+                damage = 10.0f,
+                cooldownTime=10.0f,
+                altitude=1.0f,
+                spriteFile="TransparentLightning"}
+            },
+        {DisasterType.ForestFire,
+            new DisasterInfo {
+                damage = 10.0f,
+                cooldownTime=10.0f,
+                altitude=1.0f,
+                spriteFile="TransparentFire"}
+            },
     };
     
     // The type of this disaster instance.
-    public DisasterType type;
+    public DisasterType instanceType;
 
     public Sprite GetSprite()
     {
         return GetComponent<SpriteRenderer>().sprite;
     }
 
-    public void SetType(DisasterType dtype)
+    public void SetType(DisasterType type)
     {
-        type = dtype;
-        string file = SpriteFiles[type];
+        instanceType = type;
+        DisasterInfo info = Info[instanceType];
+        string file = spritePath + info.spriteFile;
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(file);
     }
 }
