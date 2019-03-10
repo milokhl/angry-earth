@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandstormButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisasterButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -236,6 +241,21 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: isUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
 --- !u!224 &23187636 stripped
@@ -255,6 +275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TsunamiButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisasterButton
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -324,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -364,9 +389,19 @@ PrefabInstance:
     - target: {fileID: 4481823693180723052, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Text
-      value: 'Sandstorm
+      value: 'Tsunami
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: type
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
@@ -468,7 +503,12 @@ PrefabInstance:
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Name
-      value: LightningButton
+      value: ThunderstormButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisasterButton
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -538,7 +578,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -575,7 +615,20 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4481823693180723052, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Thunderstorm
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
 --- !u!224 &536895849 stripped
 RectTransform:
@@ -594,6 +647,7 @@ GameObject:
   - component: {fileID: 693450551}
   - component: {fileID: 693450553}
   - component: {fileID: 693450552}
+  - component: {fileID: 693450554}
   m_Layer: 5
   m_Name: Toolbar
   m_TagString: Untagged
@@ -661,6 +715,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693450550}
   m_CullTransparentMesh: 0
+--- !u!114 &693450554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693450550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f7818045fc764ca83787855204738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802990051
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EarthquakeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisasterButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1055,7 +1126,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1099,6 +1170,21 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024605, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
 --- !u!224 &2026003071 stripped
@@ -1107,3 +1193,23 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2026003070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2102887513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+    type: 3}
+  m_PrefabInstance: {fileID: 536895848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2102887514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102887513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff525011f36e26a41b04b111e42579dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  isUnlocked: 1

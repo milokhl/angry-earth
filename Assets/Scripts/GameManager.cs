@@ -21,8 +21,19 @@ public class GameManager : MonoBehaviour {
     private TileManager activeTile = null;
 
     public GameObject disasterPrefab;
+    
     // Player state.
-    private List<ButtonController> disasterButtons_;
+
+    // The currently clicked disaster type (null if none selected).
+    private DisasterType selectedDisaster = DisasterType.NotSelected;
+
+    // Every time a button in the toolbar is clicked, it calls this method
+    // with its DisasterType (see DisasterManager.cs)
+    public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
+    {
+        Debug.Log("Clicked on disaster: " + type);
+        selectedDisaster = type;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,16 +41,6 @@ public class GameManager : MonoBehaviour {
         InitializeTiles();
 
         Transform toolbar = transform.Find("Toolbar");
-
-        Transform lightning = transform.Find("LightningButton");
-        Transform sandstorm = toolbar.Find("SandstormButton");
-        Transform tsunami = toolbar.Find("TsunamiButton");
-        Transform earthquake = toolbar.Find("EarthquakeButton");
-
-        disasterButtons_.Add(lightning.gameObject.GetComponent<ButtonController>());
-        disasterButtons_.Add(sandstorm.gameObject.GetComponent<ButtonController>());
-        disasterButtons_.Add(tsunami.gameObject.GetComponent<ButtonController>());
-        disasterButtons_.Add(earthquake.gameObject.GetComponent<ButtonController>());
     }
 
     void Update()
