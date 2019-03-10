@@ -35,23 +35,27 @@ public class DisasterManager : MonoBehaviour
         {DisasterType.ForestFire, 7.0f}
     };
 
+    // Stores the filename of the sprite used for each disaster type.
+    public Dictionary<DisasterType, string> SpriteFiles = new Dictionary<DisasterType, string> {
+        {DisasterType.Thunderstorm, "Sprites/Placeholders/TransparentLightning"},
+        {DisasterType.Sandstorm, "Sprites/Placeholders/TransparentSandstorm"},
+        {DisasterType.Earthquake, "Sprites/Placeholders/TransparentLightning"},
+        {DisasterType.Tsunami, "Sprites/Placeholders/TransparentLightning"},
+        {DisasterType.ForestFire, "Sprites/Placeholders/TransparentFire"}
+    };
+    
     // The type of this disaster instance.
     public DisasterType type;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public Sprite GetSprite()
     {
         return GetComponent<SpriteRenderer>().sprite;
+    }
+
+    public void SetType(DisasterType dtype)
+    {
+        type = dtype;
+        string file = SpriteFiles[type];
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(file);
     }
 }

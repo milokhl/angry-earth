@@ -1051,7 +1051,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Name
-      value: EarthquakeButton
+      value: ForestFireButton
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1166,14 +1166,22 @@ PrefabInstance:
     - target: {fileID: 4481823693180723052, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Text
-      value: 'Earthquake
-
-'
+      value: Forest Fire
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024605, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1183,7 +1191,7 @@ PrefabInstance:
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: type
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
