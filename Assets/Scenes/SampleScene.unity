@@ -841,7 +841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTiles: 36
-  tilePrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
+  tileTreePrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
+    type: 3}
+  tileSettlementPrefab: {fileID: 5475345692572533441, guid: f08c7d5e2d99b6d4cae12ae752f02c2f,
     type: 3}
   disasterPrefab: {fileID: 5811893257631671531, guid: e21566dad4bd844a884953a0ac96be0a,
     type: 3}
@@ -1183,11 +1185,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.6
       objectReference: {fileID: 0}
-    - target: {fileID: 4481823693839024605, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: type
@@ -1196,6 +1193,11 @@ PrefabInstance:
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: isUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024605, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
