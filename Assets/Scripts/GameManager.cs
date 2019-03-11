@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour {
     // The number of tiles on earth's surface.
     public int numTiles = 36;
 
-    // All tiles are instantiated from the 'Tile' prefab in Prefab folder.
-    public GameObject tilePrefab;
+    // All tiles are instantiated from the 'TileX' prefab in Prefab folder, where X is a type of tile.
+    public GameObject tileTreePrefab;
+    public GameObject tileSettlementPrefab;
 
     // Each Tile prefab has a TileManager script attached.
     // We store them all here to manipulate the tile later.
@@ -78,7 +79,16 @@ public class GameManager : MonoBehaviour {
             float tileCenterRad = (float)i * tileRad;
 
             // Instantiate the tile and retrieve its TileManager script.
-            GameObject tile = Instantiate(tilePrefab);
+            // For now, let's let tiles be randomly either a tree (75% chance) or a settlement (25% chance)
+            Random rand = new Random();
+            GameObject tile;
+            if (Random.Range(0f, 1f) < 0.75f)
+            {
+                tile = Instantiate(tileTreePrefab);
+            } else
+            {
+                tile = Instantiate(tileSettlementPrefab);
+            }
             TileManager manager = tile.GetComponent<TileManager>();
 
             // We want to scale the tile width so that it takes up all of the available arc length.
@@ -121,6 +131,7 @@ public class GameManager : MonoBehaviour {
         if (aboveDelta < 0) { aboveDelta = 2.0f * Mathf.PI + aboveDelta; }
 
         int closest_idx = (belowDelta <= aboveDelta) ? below : above;
+        Debug.Log(closest_idx);
         return tiles_[closest_idx];
     }
 

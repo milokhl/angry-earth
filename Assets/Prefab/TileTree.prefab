@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4452246939919475960}
   - component: {fileID: 6252347152314100907}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: TileTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3282d26d8a2c39542aa321ea6a0decfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainType: TreeTerrain
 --- !u!122 &6252347152314100907
 Halo:
   m_ObjectHideFlags: 0
