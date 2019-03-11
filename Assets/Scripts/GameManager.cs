@@ -169,7 +169,9 @@ public class GameManager : MonoBehaviour {
 
         //May need to change the position and scaling factor depending on the actual
         //size of the sprite
-        Vector3 disPos = (earthRadius + 1.0f * spriteHeight) * disNormal;
+        float altitude = DisasterManager.Info[selectedDisaster].altitude;
+
+        Vector3 disPos = (earthRadius + altitude * spriteHeight) * disNormal;
         disaster.transform.localScale = Vector3.one * disScaleFactor*2.0f;
         disaster.transform.position = disPos;
         disaster.transform.rotation = tileRot;
