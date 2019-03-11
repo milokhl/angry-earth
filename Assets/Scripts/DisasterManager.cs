@@ -28,7 +28,7 @@ public class DisasterManager : MonoBehaviour
 {
     private string spritePath = "Sprites/Placeholders/";
 
-    public Dictionary<DisasterType, DisasterInfo> Info = new Dictionary<DisasterType, DisasterInfo>
+    public static Dictionary<DisasterType, DisasterInfo> Info = new Dictionary<DisasterType, DisasterInfo>
     {
         {DisasterType.Thunderstorm,
             new DisasterInfo {
@@ -41,7 +41,7 @@ public class DisasterManager : MonoBehaviour
             new DisasterInfo {
                 damage = 10.0f,
                 cooldownTime=10.0f,
-                altitude=1.0f,
+                altitude=0.3f,
                 spriteFile="TransparentSandstorm"}
             },
         {DisasterType.Earthquake,
@@ -55,14 +55,14 @@ public class DisasterManager : MonoBehaviour
             new DisasterInfo {
                 damage = 10.0f,
                 cooldownTime=10.0f,
-                altitude=1.0f,
+                altitude=0.0f,
                 spriteFile="TransparentLightning"}
             },
         {DisasterType.ForestFire,
             new DisasterInfo {
                 damage = 10.0f,
                 cooldownTime=10.0f,
-                altitude=1.0f,
+                altitude=0.05f,
                 spriteFile="TransparentFire"}
             },
     };
