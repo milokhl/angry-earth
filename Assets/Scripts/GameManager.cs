@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour {
 
         // Instantiate the disaster and retrieve its DisasterManager script.
         GameObject disaster = Instantiate(disasterPrefab);
+        Destroy(disaster, 1.0f);
         DisasterManager manager = disaster.GetComponent<DisasterManager>();
         manager.SetType(selectedDisaster);
 
