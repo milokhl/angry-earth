@@ -12,14 +12,15 @@ public class GameManager : MonoBehaviour {
     // The number of tiles on earth's surface.
     public int numTiles = 36;
 
-    // All tiles are instantiated from the 'TileX' prefab in Prefab folder, where X is a type of tile.
-    public GameObject tileTreePrefab;
-    public GameObject tileSettlementPrefab;
+    // // All tiles are instantiated from the 'TileX' prefab in Prefab folder, where X is a type of tile.
+    // public GameObject tileTreePrefab;
+    // public GameObject tileSettlementPrefab;
+    public GameObject buildingPrefab;
 
-    // Each Tile prefab has a TileManager script attached.
+    // Each Tile prefab has a BuildingManager script attached.
     // We store them all here to manipulate the tile later.
-    private List<TileManager> tiles_ = new List<TileManager>();
-    private TileManager activeTile = null;
+    private List<BuildingManager> tiles_ = new List<BuildingManager>();
+    private BuildingManager activeTile = null;
 
     public GameObject disasterPrefab;
     
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour {
         // The mouse position is in screen pixel coordinates, and we need to
         // center it relative to the world.
         Vector2 centeredPos = mousePos - 0.5f * new Vector2(Screen.width, Screen.height);
-        TileManager active = GetActiveTile(centeredPos.x, centeredPos.y);
+        BuildingManager active = GetActiveTile(centeredPos.x, centeredPos.y);
 
         if (activeTile != null) {
             activeTile.Highlight(false); // Turn off previously active tile.
@@ -78,16 +79,16 @@ public class GameManager : MonoBehaviour {
             float tileCenterDeg = (float)i * tileDeg - 90.0f;
             float tileCenterRad = (float)i * tileRad;
 
-            // Instantiate the tile and retrieve its TileManager script.
+            // Instantiate the tile and retrieve its BuildingManager script.
             // For now, let's let tiles be randomly either a tree (75% chance) or a settlement (25% chance)
             Random rand = new Random();
-            GameObject tile;
-            if (Random.Range(0f, 1f) < 0.75f) {
-                tile = Instantiate(tileTreePrefab);
-            } else {
-                tile = Instantiate(tileSettlementPrefab);
-            }
-            TileManager manager = tile.GetComponent<TileManager>();
+            GameObject tile = Instantiate(buildingPrefab);
+            // if (Random.Range(0f, 1f) < 0.75f) {
+            //     // tile = Instantiate(tileTreePrefab);
+            // } else {
+            //     tile = Instantiate(tileSettlementPrefab);
+            // }
+            BuildingManager manager = tile.GetComponent<BuildingManager>();
 
             // We want to scale the tile width so that it takes up all of the available arc length.
             // This allows us to instantiate the tile without knowing about the units / px of the sprite.
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour {
     }
 
     // Get the tile that is 'active' given the current angular mouse location.
-    TileManager GetActiveTile(float x, float y)
+    BuildingManager GetActiveTile(float x, float y)
     {
         float tileRad = 2.0f * Mathf.PI / numTiles;
         float theta = Mathf.Atan2(y, x);

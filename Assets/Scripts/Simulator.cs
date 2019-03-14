@@ -78,5 +78,14 @@ public class Simulator : MonoBehaviour
         populationMeter.text = "Year: " + currentYear +
                         "\nPopulation: " + population +
                         "\nTechnology: " + techLvl;
+
+        if (techLvl >= gameoverTechLvl) {
+            OnGameOver();
+        }
+    }
+
+    void OnGameOver()
+    {
+        Debug.Log("GAMEOVER! Humans reached max technology level.");
     }
 }

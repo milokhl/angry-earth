@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileManager : MonoBehaviour {
+public class BuildingManager : MonoBehaviour {
     private bool isHighlighted = false;
     private Behaviour halo = null;
     
