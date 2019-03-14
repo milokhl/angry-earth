@@ -82,11 +82,9 @@ public class GameManager : MonoBehaviour {
             // For now, let's let tiles be randomly either a tree (75% chance) or a settlement (25% chance)
             Random rand = new Random();
             GameObject tile;
-            if (Random.Range(0f, 1f) < 0.75f)
-            {
+            if (Random.Range(0f, 1f) < 0.75f) {
                 tile = Instantiate(tileTreePrefab);
-            } else
-            {
+            } else {
                 tile = Instantiate(tileSettlementPrefab);
             }
             TileManager manager = tile.GetComponent<TileManager>();
