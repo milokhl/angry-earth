@@ -5,16 +5,26 @@ using UnityEngine.UI;
 
 public class Simulator : MonoBehaviour
 {
-    public int initialYear = 1800;
-    public int initialPopulation = 1000000000;
-    public float yearlyGrowthFactor = 1.01f;
-    public float secondsPerYear = 1.0f; // 5 minutes to go 1800 -> 2100
+    private const float e = 2.7182818f;
 
-    private int population;
+    // Initial state.
+    public int initialYear = 1800;
+    public long initialPopulation = 1000000000;
+    public float popGrowthFactor = 1.011f;
+    public float secondsPerYear = 1.0f; // 5 minutes to go 1800 -> 2100
+    public float initialTechLvl = 0.0f;
+
+    // Current state.
+    private long population;
     private int currentYear;
     private float globalTimer;
     private float yearTimer;
+    private float techLvl;
+    private float gameoverTechLvl = 100.0f;
+    private int targetGameoverYear = 2100;
+    private float techGrowthFactor;
 
+    // Visual indicators.
     private Text populationMeter;
 
     // Start is called before the first frame update
@@ -26,12 +36,21 @@ public class Simulator : MonoBehaviour
         globalTimer = 0.0f;
         yearTimer = secondsPerYear;
 
+        techLvl = initialTechLvl;
+
+        // Set the techGrowthFactor so that an undisturbed human civilization would reach
+        // gameoverTechLvl by targetGameoverYear. This equation assumes that the techLvl
+        // increments at a rate proportional to the human population (techGrowthFactor).
+        float numYrs = (float)(targetGameoverYear - initialYear);
+        techGrowthFactor = numYrs * (popGrowthFactor - 1) /
+                           (initialPopulation * popGrowthFactor * (Mathf.Pow(popGrowthFactor, numYrs) - 1));
+
         populationMeter = GameObject.Find("PopulationMeter").GetComponent<Text>();
 
         OnYearStart();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         globalTimer += Time.deltaTime;
         yearTimer -= Time.deltaTime;
@@ -48,9 +67,16 @@ public class Simulator : MonoBehaviour
     // Called at the end of every year.
     void OnYearStart()
     {
-        population = (int)((float)population * yearlyGrowthFactor);
-        Debug.Log("Population: " + population);
+        // Update the population.
+        population = (long)((float)population * popGrowthFactor);
 
-        populationMeter.text = "Year: " + currentYear + "\nPopulation: " + population;
+        // Update the technology level (don't do this at year 0).
+        if (currentYear > initialYear) {
+            techLvl += techGrowthFactor * population;
+        }
+
+        populationMeter.text = "Year: " + currentYear +
+                        "\nPopulation: " + population +
+                        "\nTechnology: " + techLvl;
     }
 }
