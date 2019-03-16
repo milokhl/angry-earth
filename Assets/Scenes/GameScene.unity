@@ -895,9 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTiles: 36
-  tileTreePrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
-    type: 3}
-  tileSettlementPrefab: {fileID: 5475345692572533441, guid: f08c7d5e2d99b6d4cae12ae752f02c2f,
+  buildingPrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
     type: 3}
   disasterPrefab: {fileID: 5811893257631671531, guid: e21566dad4bd844a884953a0ac96be0a,
     type: 3}
@@ -915,8 +913,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialYear: 1800
   initialPopulation: 1000000000
-  yearlyGrowthFactor: 1.01
+  popGrowthFactor: 1.011
   secondsPerYear: 1
+  initialTechLvl: 0
 --- !u!1 &1670165960
 GameObject:
   m_ObjectHideFlags: 0

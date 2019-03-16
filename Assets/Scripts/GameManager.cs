@@ -83,12 +83,13 @@ public class GameManager : MonoBehaviour {
             // For now, let's let tiles be randomly either a tree (75% chance) or a settlement (25% chance)
             Random rand = new Random();
             GameObject tile = Instantiate(buildingPrefab);
-            // if (Random.Range(0f, 1f) < 0.75f) {
-            //     // tile = Instantiate(tileTreePrefab);
-            // } else {
-            //     tile = Instantiate(tileSettlementPrefab);
-            // }
             BuildingManager manager = tile.GetComponent<BuildingManager>();
+
+            // By default, tiles should show a tree (the base Building class).
+            // We can randomly override with a Settlement here.
+            if (Random.Range(0f, 1f) < 0.25f) {
+                manager.building = new Settlement();
+            }
 
             // We want to scale the tile width so that it takes up all of the available arc length.
             // This allows us to instantiate the tile without knowing about the units / px of the sprite.
