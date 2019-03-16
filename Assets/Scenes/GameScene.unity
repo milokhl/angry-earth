@@ -698,6 +698,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188f7818045fc764ca83787855204738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &769263185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769263186}
+  - component: {fileID: 769263188}
+  - component: {fileID: 769263187}
+  m_Layer: 5
+  m_Name: PopulationMeter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &769263186
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769263185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 802990055}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -194, y: -52}
+  m_SizeDelta: {x: 342.1, y: 49.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &769263187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769263185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 5
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Year: 1800
+
+    Population: 1,000,000,000'
+--- !u!222 &769263188
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769263185}
+  m_CullTransparentMesh: 0
 --- !u!1 &802990051
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +792,7 @@ GameObject:
   - component: {fileID: 802990053}
   - component: {fileID: 802990052}
   - component: {fileID: 802990056}
+  - component: {fileID: 802990057}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -791,6 +873,7 @@ RectTransform:
   m_Children:
   - {fileID: 2006271803}
   - {fileID: 693450551}
+  - {fileID: 769263186}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -812,12 +895,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTiles: 36
-  tileTreePrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
-    type: 3}
-  tileSettlementPrefab: {fileID: 5475345692572533441, guid: f08c7d5e2d99b6d4cae12ae752f02c2f,
+  buildingPrefab: {fileID: 5475345692572533441, guid: d78918ee5a5189647b7f54fd6d5e6981,
     type: 3}
   disasterPrefab: {fileID: 5811893257631671531, guid: e21566dad4bd844a884953a0ac96be0a,
     type: 3}
+--- !u!114 &802990057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802990051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8435eef3b190f164096b44f5c0dc9125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialYear: 1800
+  initialPopulation: 1000000000
+  popGrowthFactor: 1.011
+  secondsPerYear: 1
+  initialTechLvl: 0
 --- !u!1 &1670165960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,11 +1264,6 @@ PrefabInstance:
       propertyPath: isUnlocked
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4481823693839024605, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Sprite
@@ -1181,6 +1274,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Type
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481823693839024605, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
