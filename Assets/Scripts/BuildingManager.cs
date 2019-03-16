@@ -63,4 +63,18 @@ public class BuildingManager : MonoBehaviour {
     {
         return GetComponent<SpriteRenderer>().sprite;
     }
+    public bool Attack(DisasterType disaster)
+    {
+        if (disaster != DisasterType.NotSelected)
+        {
+            float damage = DisasterManager.Info[disaster].damage;
+            building.health -= damage;
+            if (building.health <= 0)
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
 }
