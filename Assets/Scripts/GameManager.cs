@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour {
     // with its DisasterType (see DisasterManager.cs)
     public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
     {
-        Debug.Log("Clicked on disaster: " + type);
         selectedDisaster = type;
     }
 
@@ -131,7 +130,6 @@ public class GameManager : MonoBehaviour {
         if (aboveDelta < 0) { aboveDelta = 2.0f * Mathf.PI + aboveDelta; }
 
         int closest_idx = (belowDelta <= aboveDelta) ? below : above;
-        Debug.Log(closest_idx);
         return tiles_[closest_idx];
     }
 

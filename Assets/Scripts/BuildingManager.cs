@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// The base class for buildings. Displays a blank tile by default.
+// The base class for buildings. Displays a blank tile (tree) by default.
 // All other buildings should derive from this class and override
 // the constructor with their own sprite file and other properties.
 public class Building
