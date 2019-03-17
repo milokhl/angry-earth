@@ -37,23 +37,20 @@ public class BuildingManager : MonoBehaviour {
     {
         return GetComponent<SpriteRenderer>().sprite;
     }
-    public bool Attack(DisasterType disaster)
+    public bool Attack(Disaster disaster)
     {
-        if (disaster != DisasterType.NotSelected)
-        {
-            float damage = DisasterManager.Info[disaster].damage;
-            building.health -= damage;
-            if (building.health <= 0)
-            {
-                return true;
-            }
+        building.health -= disaster.damage;
+
+        if (building.health <= 0) {
+            return true;
         }
+
         return false;
     }
 
     // Resets a building to a tree (empty tile).
     // Pass in the disaster type in case we want to support different animations later.
-    public void Destroy(DisasterType disaster)
+    public void Destroy(Disaster disaster)
     {
         building = new Building();
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(building.spritePath);

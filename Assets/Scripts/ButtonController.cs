@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    public DisasterType type; // See DisasterManager.cs for supported types.
+    public Type DisasterTypeT;
     public bool isUnlocked = false;
 
     // Keeps track of the time until this button is available.
