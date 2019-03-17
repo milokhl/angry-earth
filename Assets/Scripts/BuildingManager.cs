@@ -2,32 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// The base class for buildings. Displays a blank tile (tree) by default.
-// All other buildings should derive from this class and override
-// the constructor with their own sprite file and other properties.
-public class Building
-{
-    public float health = 0;
-    public string spritePath = "Sprites/Placeholders/TransparentTree";
-    public Building() {}
-};
-
-public class Settlement : Building
-{
-    public Settlement() : base() {
-        spritePath = "Sprites/Placeholders/TransparentSettlement";
-        health = 50;
-    }
-}
-
-public class Factory : Building
-{
-    public Factory() : base() {
-        spritePath = "Sprites/Placeholders/Factory";
-        health = 100;
-    }
-}
-
 public class BuildingManager : MonoBehaviour {
     public Building building = new Building();
     private bool isHighlighted = false;
@@ -63,18 +37,22 @@ public class BuildingManager : MonoBehaviour {
     {
         return GetComponent<SpriteRenderer>().sprite;
     }
-    public bool Attack(DisasterType disaster)
+    public bool Attack(Disaster disaster)
     {
-        if (disaster != DisasterType.NotSelected)
-        {
-            float damage = DisasterManager.Info[disaster].damage;
-            building.health -= damage;
-            if (building.health <= 0)
-            {
-                return true;
-            }
-        }
-        return false;
+        building.health -= disaster.damage;
 
+        if (building.health <= 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Resets a building to a tree (empty tile).
+    // Pass in the disaster type in case we want to support different animations later.
+    public void Destroy(Disaster disaster)
+    {
+        building = new Building();
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(building.spritePath);
     }
 }
