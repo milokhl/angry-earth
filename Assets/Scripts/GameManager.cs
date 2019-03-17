@@ -65,10 +65,8 @@ public class GameManager : MonoBehaviour {
             int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
             PlaceDisaster(activeI);
             bool destroyed = active.Attack(selectedDisaster);
-            if (destroyed)
-            {
-                Destroy(activeTile.gameObject);
-                PlaceTree(activeI);
+            if (destroyed) {
+                activeTile.Destroy(selectedDisaster);
             }
         }
     }
@@ -203,39 +201,5 @@ public class GameManager : MonoBehaviour {
 
         int closest_idx = (belowDelta <= aboveDelta) ? below : above;
         return closest_idx;
-    }
-
-    private void PlaceTree(int i)
-    {
-        float tileDeg = 360.0f / numTiles;
-        float tileRad = tileDeg * Mathf.PI / 180.0f;
-        float tileArcLength = tileRad * earthRadius;
-
-        float tileCenterDeg = (float)i * tileDeg - 90.0f;
-        float tileCenterRad = (float)i * tileRad;
-
-        // Instantiate the tile and retrieve its BuildingManager script.
-        // For now, let's let tiles be randomly either a tree (75% chance) or a settlement (25% chance)
-        Random rand = new Random();
-        GameObject tile = Instantiate(buildingPrefab);
-        BuildingManager manager = tile.GetComponent<BuildingManager>();
-
-        // We want to scale the tile width so that it takes up all of the available arc length.
-        // This allows us to instantiate the tile without knowing about the units / px of the sprite.
-        float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
-        float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
-        float tileScaleFactor = tileArcLength / spriteWidth;
-
-        // Rotate and translate the tile so that it is on the edge of the earth.
-        // Quaternion.Euler expects degrees!
-        Quaternion tileRot = Quaternion.Euler(0, 0, tileCenterDeg);
-
-        // Move the tile radially outward by earthRadius.
-        Vector3 tileNormal = new Vector3(Mathf.Cos(tileCenterRad), Mathf.Sin(tileCenterRad), 0.0f);
-        Vector3 tilePos = (earthRadius + 0.5f * spriteHeight) * tileNormal;
-        tile.transform.position = tilePos;
-        tile.transform.rotation = tileRot;
-
-        tiles_[i] = manager;
     }
 }

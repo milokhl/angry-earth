@@ -49,6 +49,13 @@ public class BuildingManager : MonoBehaviour {
             }
         }
         return false;
+    }
 
+    // Resets a building to a tree (empty tile).
+    // Pass in the disaster type in case we want to support different animations later.
+    public void Destroy(DisasterType disaster)
+    {
+        building = new Building();
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(building.spritePath);
     }
 }

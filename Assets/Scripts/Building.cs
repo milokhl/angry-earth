@@ -15,7 +15,7 @@ public class Settlement : Building
 {
     public Settlement() : base() {
         spritePath = "Sprites/Human/Settlement";
-        health = 50.0f;
+        health = 20.0f;
     }
 }
 
