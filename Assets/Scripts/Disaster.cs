@@ -64,7 +64,7 @@ public class Meteor : Disaster
     public Meteor() : base() {
         damage = 1000.0f;
         cooldownTime = 20.0f;
-        altitude = 5.0f;
+        altitude = 1.0f;
         spritePath = "Sprites/Nature/Meteor";
     }
 };

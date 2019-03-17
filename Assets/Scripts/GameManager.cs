@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour {
         {
             int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
 
+            Debug.Log(selectedDisaster);
+
             if (selectedDisaster != DisasterType.NotSelected) {
                 PlaceDisaster(activeI);
 
