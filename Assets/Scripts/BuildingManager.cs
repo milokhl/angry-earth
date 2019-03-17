@@ -2,32 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// The base class for buildings. Displays a blank tile (tree) by default.
-// All other buildings should derive from this class and override
-// the constructor with their own sprite file and other properties.
-public class Building
-{
-    public float health = 0;
-    public string spritePath = "Sprites/Placeholders/TransparentTree";
-    public Building() {}
-};
-
-public class Settlement : Building
-{
-    public Settlement() : base() {
-        spritePath = "Sprites/Placeholders/TransparentSettlement";
-        health = 50;
-    }
-}
-
-public class Factory : Building
-{
-    public Factory() : base() {
-        spritePath = "Sprites/Placeholders/Factory";
-        health = 100;
-    }
-}
-
 public class BuildingManager : MonoBehaviour {
     public Building building = new Building();
     private bool isHighlighted = false;
