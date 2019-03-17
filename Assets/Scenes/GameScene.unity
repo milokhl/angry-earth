@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Name
-      value: SandstormButton
+      value: FireButton
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -237,9 +237,7 @@ PrefabInstance:
     - target: {fileID: 4481823693180723052, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Text
-      value: 'Sandstorm
-
-'
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -256,11 +254,16 @@ PrefabInstance:
       propertyPath: isUnlocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: disasterType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1f0f03e29b6d1b741bf3fe3b69f5edc5,
+      objectReference: {fileID: 21300000, guid: 71508fa35160d274aa075bf14d483241,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -592,12 +595,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 46b9bb23fd73a42f8b1c85bb5f00fb52,
+      objectReference: {fileID: 21300000, guid: 4aceebff5bbbd944cb9f8314bf81803c,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
@@ -1122,7 +1125,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Name
-      value: ForestFireButton
+      value: TornadoButton
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024579, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1237,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 4481823693180723052, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Text
-      value: Forest Fire
+      value: Tornado
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693180722963, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1264,11 +1267,16 @@ PrefabInstance:
       propertyPath: isUnlocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
+        type: 3}
+      propertyPath: disasterType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1b590253426c42b4d83f58796c26ce4a,
+      objectReference: {fileID: 21300000, guid: 5cbd7c311a4b6704da80e373502e7198,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1306,5 +1314,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff525011f36e26a41b04b111e42579dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  disasterType: 1
   isUnlocked: 1

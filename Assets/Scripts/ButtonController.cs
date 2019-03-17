@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    public Type DisasterTypeT;
+    public DisasterType disasterType;
     public bool isUnlocked = false;
 
     // Keeps track of the time until this button is available.

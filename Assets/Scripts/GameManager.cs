@@ -20,13 +20,23 @@ public class GameManager : MonoBehaviour {
     
     // Player state.
     // The currently clicked disaster type.
-    private Type SelectedDisasterT = null;
+    private DisasterType selectedDisaster = DisasterType.NotSelected;
+    // private Type SelectedDisasterT = null;
 
     // Every time a button in the toolbar is clicked, it calls this method
     // with its DisasterType (see DisasterManager.cs)
-    public void DisasterButtonClickHandler(Type type, ButtonController controller)
+    private Dictionary<DisasterType, Type> DisasterTypeToClass = new Dictionary<DisasterType, Type>
     {
-        SelectedDisasterT = type;
+        {DisasterType.Thunderstorm, typeof(Thunderstorm)},
+        {DisasterType.Fire, typeof(Fire)},
+        {DisasterType.Tornado, typeof(Tornado)},
+        {DisasterType.Tsunami, typeof(Tsunami)},
+        {DisasterType.Meteor, typeof(Meteor)}
+    };
+
+    public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
+    {
+        selectedDisaster = type;
     }
 
     // Start is called before the first frame update
@@ -56,13 +66,17 @@ public class GameManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
-            PlaceDisaster(activeI);
 
-            Disaster instance = (Disaster)Activator.CreateInstance(SelectedDisasterT);
+            if (selectedDisaster != DisasterType.NotSelected) {
+                PlaceDisaster(activeI);
 
-            bool destroyed = active.Attack(instance);
-            if (destroyed) {
-                activeTile.Destroy(instance);
+                Type SelectedDisasterT = DisasterTypeToClass[selectedDisaster];
+                Disaster instance = (Disaster)Activator.CreateInstance(SelectedDisasterT);
+
+                bool destroyed = active.Attack(instance);
+                if (destroyed) {
+                    activeTile.Destroy(instance);
+                }
             }
         }
     }
@@ -137,7 +151,7 @@ public class GameManager : MonoBehaviour {
     private void PlaceDisaster(int i)
     {
         // Don't place anything if no disaster selected.
-        if (SelectedDisasterT == null) {
+        if (selectedDisaster == DisasterType.NotSelected) {
             return;
         }
 
@@ -152,6 +166,8 @@ public class GameManager : MonoBehaviour {
         // Instantiate the disaster and retrieve its DisasterManager script.
         GameObject disaster = Instantiate(disasterPrefab);
         DisasterManager manager = disaster.GetComponent<DisasterManager>();
+
+        Type SelectedDisasterT = DisasterTypeToClass[selectedDisaster];
         manager.disaster = (Disaster)Activator.CreateInstance(SelectedDisasterT); // Give the disaster a type.
 
         // Countdown to destroy the disaster.

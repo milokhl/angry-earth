@@ -24,9 +24,8 @@ public class ToolbarManager : MonoBehaviour
                 // Set up a click callback on each button. The button will pass its own disaster
                 // type into the callback function to notify the GameManager which button was clicked.
                 ButtonController controller = button.GetComponent<ButtonController>();
-                Type type = controller.DisasterTypeT;
                 button.onClick.AddListener(delegate {
-                    gm.DisasterButtonClickHandler(type, controller);
+                    gm.DisasterButtonClickHandler(controller.disasterType, controller);
                 });
 
                 buttons_.Add(button);

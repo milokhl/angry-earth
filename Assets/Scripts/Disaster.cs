@@ -1,6 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum DisasterType
+{
+    NotSelected,
+    Thunderstorm,
+    Fire,
+    Tornado,
+    Tsunami,
+    Meteor
+};
+
 // Base class for all disasters.
 public class Disaster
 {
@@ -24,7 +34,7 @@ public class Fire : Disaster
     public Fire() : base() {
         damage = 15.0f;
         cooldownTime = 10.0f;
-        altitude = 0.0f;
+        altitude = 0.1f;
         spritePath = "Sprites/Nature/Fire";
     }
 };
@@ -34,7 +44,7 @@ public class Tornado : Disaster
     public Tornado() : base() {
         damage = 20.0f;
         cooldownTime = 5.0f;
-        altitude = 0.0f;
+        altitude = 0.4f;
         spritePath = "Sprites/Nature/Tornado";
     }
 };
