@@ -87,6 +87,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void SetBuilding(int i, Building instance)
+    {
+        BuildingManager manager = tiles_[i].GetComponent<BuildingManager>();
+        manager.SetBuilding(instance);
+    }
+
+    public List<BuildingManager> BuildingManagers()
+    {
+        return tiles_;
+    }
+
     private void InitializeTiles()
     {
         // Tile angular width in degrees and radians.
@@ -104,17 +115,11 @@ public class GameManager : MonoBehaviour {
             GameObject tile = Instantiate(buildingPrefab);
             BuildingManager manager = tile.GetComponent<BuildingManager>();
 
-            // By default, tiles should show a tree (the base Building class).
-            // We can randomly override with a Settlement here.
-            if (UnityEngine.Random.Range(0f, 1f) < 0.25f) {
-                manager.building = new Settlement();
-            }
-
             // We want to scale the tile width so that it takes up all of the available arc length.
             // This allows us to instantiate the tile without knowing about the units / px of the sprite.
             float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
             float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
-            float tileScaleFactor = tileArcLength / spriteWidth;
+            float tileScaleFactor = tileArcLength / spriteWidth; // TODO: this isn't used??
 
             // Rotate and translate the tile so that it is on the edge of the earth.
             // Quaternion.Euler expects degrees!
@@ -122,7 +127,7 @@ public class GameManager : MonoBehaviour {
 
             // Move the tile radially outward by earthRadius.
             Vector3 tileNormal = new Vector3(Mathf.Cos(tileCenterRad), Mathf.Sin(tileCenterRad), 0.0f);
-            Vector3 tilePos = (earthRadius + 0.5f *spriteHeight - 0.1f) * tileNormal;
+            Vector3 tilePos = (earthRadius - 0.1f) * tileNormal;
             tile.transform.position = tilePos;
             tile.transform.rotation = tileRot;
 

@@ -16,9 +16,19 @@ public enum BuildingType
 // the constructor with their own sprite file and other properties.
 public class Building
 {
+    // This is the health of one settlement, which we measure other
+    // buildings and disaster damages relative to.
+    public static float BASE_HEALTH_UNIT = 1.0f;
     public float health = 0;
     public float xpGain = 0;
+
+    // The rank determines what a building can upgrade to.
+    // A building with a lower rank will always upgrad to a building
+    // of a higher rank.
+    public int rank = 0;
+    public int unlockedYear = 1700;
     public string spritePath = "Sprites/Nature/Tree";
+    public string debugName = "Building";
     public Building() {}
 };
 
@@ -26,17 +36,32 @@ public class Settlement : Building
 {
     public Settlement() : base() {
         spritePath = "Sprites/Human/Settlement";
-        health = 20.0f;
         xpGain = 1;
-}
+        health = 1.0f * BASE_HEALTH_UNIT;
+        unlockedYear = 1800;
+        rank = 1;
+    }
 }
 
 public class House : Building
 {
     public House() : base() {
         spritePath = "Sprites/Human/House";
-        health = 30.0f;
         xpGain = 3;
+        health = 3.0f * BASE_HEALTH_UNIT;
+        unlockedYear = 1850;
+        rank = 2;
+    }
+}
+
+public class Trash : Building
+{
+    public Trash() : base() {
+        spritePath = "Sprites/Human/Trash";
+        xpGain = 1;
+        health = 1.0f * BASE_HEALTH_UNIT;
+        unlockedYear = 1950;
+        rank = -1;
     }
 }
 
@@ -44,8 +69,10 @@ public class Factory : Building
 {
     public Factory() : base() {
         spritePath = "Sprites/Human/Factory";
-        health = 100.0f;
         xpGain = 5;
+        health = 5.0f * BASE_HEALTH_UNIT;
+        unlockedYear = 1900;
+        rank = 3;
     }
 }
 
@@ -53,7 +80,9 @@ public class Skyscraper : Building
 {
     public Skyscraper() : base() {
         spritePath = "Sprites/Human/Skyscraper";
-        health = 200.0f;
         xpGain = 10;
+        health = 10.0f * BASE_HEALTH_UNIT;
+        unlockedYear = 1980;
+        rank = 4;
     }
 }
