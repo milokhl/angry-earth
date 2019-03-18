@@ -38,7 +38,6 @@ public class BuildingManager : MonoBehaviour {
         SpriteRenderer spr = GetComponent<SpriteRenderer>();
         spr.sortingOrder = -1;
         return spr.sprite;
-        //return GetComponent<SpriteRenderer>().sprite;
     }
     public bool Attack(Disaster disaster)
     {
@@ -57,5 +56,7 @@ public class BuildingManager : MonoBehaviour {
     {
         building = new Building();
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(building.spritePath);
+
+
     }
 }
