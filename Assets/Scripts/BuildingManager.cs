@@ -13,9 +13,7 @@ public class BuildingManager : MonoBehaviour {
         // For now, the Halo component is what's used for highlighting.
         // We might want to change this later on.
         halo = (Behaviour)GetComponent("Halo");
-
-        // Each type of building has a path to a sprite.
-        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(building.spritePath);
+        SetBuilding(new Building());
     }
 
     // Update is called once per frame
@@ -43,19 +41,19 @@ public class BuildingManager : MonoBehaviour {
     public bool Attack(Disaster disaster)
     {
         building.health -= disaster.damage;
+        return (building.health <= 0);
+    }
 
-        if (building.health <= 0) {
-            return true;
-        }
-
-        return false;
+    public void SetBuilding(Building instance)
+    {
+        building = instance;
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(instance.spritePath);
     }
 
     // Resets a building to a tree (empty tile).
     // Pass in the disaster type in case we want to support different animations later.
     public void Destroy(Disaster disaster)
     {
-        building = new Building();
-        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(building.spritePath);
+        SetBuilding(new Building());
     }
 }
