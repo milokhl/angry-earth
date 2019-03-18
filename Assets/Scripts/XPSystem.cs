@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class XPSystem : MonoBehaviour
 {
     public float startingXP = 0.0f;
-    public float maxXP = 100;                           
+    public float maxXP = 100.0f;                           
     public float currentXP;                                   
     public Slider XPSlider;
 
@@ -22,9 +22,11 @@ public class XPSystem : MonoBehaviour
         XPSlider.value = currentXP / maxXP;
     }
 
-    public void EarnXP(float xpEarned)
+    public float EarnXP(float xpEarned)
     {
         currentXP += xpEarned;
-        //XPSlider.value = currentXP / maxXP;
+        return currentXP / maxXP;
     }
+
+
 }

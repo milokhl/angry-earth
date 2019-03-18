@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: isUnlocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingXP: 0
-  maxXP: 1000
+  maxXP: 100
   currentXP: 0
   XPSlider: {fileID: 950351862}
 --- !u!114 &950351862
@@ -1346,7 +1346,7 @@ PrefabInstance:
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: isUnlocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1406,8 +1406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4.7, y: 0}
+  m_SizeDelta: {x: -9.3, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556175549
 MonoBehaviour:
@@ -1581,7 +1581,7 @@ PrefabInstance:
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: isUnlocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1828,7 +1828,7 @@ PrefabInstance:
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: isUnlocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
