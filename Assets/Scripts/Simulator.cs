@@ -108,7 +108,6 @@ public class Simulator : MonoBehaviour
         if (mEmpty) {
             float initProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) < initProbability) {
-                // Decided to init; choose which building to create.
                 int randomIdx = SampleBuildingUniform();
                 gameManager.SetBuilding(i, buildingTypes[randomIdx]);
             }
@@ -140,7 +139,6 @@ public class Simulator : MonoBehaviour
             Building btype = buildingTypes[i];
             if (currentYear >= btype.unlockedYear) {
                 buildingUnlockedMask[i] = true;
-                Debug.Log(">>> UNLOCKED BUILDING: " + btype.GetType().Name);
             }
         }
 

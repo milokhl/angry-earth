@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
 
             // Move the tile radially outward by earthRadius.
             Vector3 tileNormal = new Vector3(Mathf.Cos(tileCenterRad), Mathf.Sin(tileCenterRad), 0.0f);
-            Vector3 tilePos = (earthRadius + 0.5f *spriteHeight - 0.1f) * tileNormal;
+            Vector3 tilePos = (earthRadius - 0.1f) * tileNormal;
             tile.transform.position = tilePos;
             tile.transform.rotation = tileRot;
 
