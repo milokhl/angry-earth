@@ -44,6 +44,20 @@ public class Simulator : MonoBehaviour
         false
     };
 
+    private Dictionary<Type, Building> buildingUpgradeMap = new Dictionary<Type, Building> {
+        {typeof(Settlement), new House()},
+        {typeof(House), new Factory()},
+        {typeof(Factory), new Skyscraper()}
+    };
+
+    private List<int> upgradeIndex = new List<int>() {
+        1, // 0 --> 1
+        3, // 1 --> 3
+        -1, // Trash doesn't upgrade
+        4,
+        -1 // Skyscraper doesn't upgrade
+    };
+
     // Visual indicators.
     private Text populationMeter;
     private GameManager gameManager;
@@ -105,11 +119,23 @@ public class Simulator : MonoBehaviour
         bool rEmpty = (right.GetType() == typeof(Building));
 
         // CASE 1: Empty square, decide whether to init.
+        // We decide whether to initialize a building with some probability,
+        // then uniformly choose from the available buildings.
         if (mEmpty) {
-            float initProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
-            if (UnityEngine.Random.Range(0.0f, 1.0f) < initProbability) {
+            float initProbability = (lEmpty && rEmpty) ? 0.003f : 0.006f;
+            if (UnityEngine.Random.Range(0.0f, 1.0f) <= initProbability) {
                 int randomIdx = SampleBuildingUniform();
                 gameManager.SetBuilding(i, buildingTypes[randomIdx]);
+            }
+        
+        // CASE 2: Square has a building, upgrade it with some probability.
+        } else {
+            float upgradeProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
+            if (UnityEngine.Random.Range(0.0f, 1.0f) <= upgradeProbability) {
+                if (buildingUpgradeMap.ContainsKey(mid.GetType())) {
+                    Building upgrade = buildingUpgradeMap[mid.GetType()];
+                    gameManager.SetBuilding(i, upgrade);
+                }
             }
         }
     }

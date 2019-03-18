@@ -11,6 +11,10 @@ public class Building
     public static float BASE_HEALTH_UNIT = 1.0f;
     public float health = 0;
 
+    // The rank determines what a building can upgrade to.
+    // A building with a lower rank will always upgrad to a building
+    // of a higher rank.
+    public int rank = 0;
     public int unlockedYear = 1700;
     public string spritePath = "Sprites/Nature/Tree";
     public string debugName = "Building";
@@ -23,6 +27,7 @@ public class Settlement : Building
         spritePath = "Sprites/Human/Settlement";
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
+        rank = 1;
     }
 }
 
@@ -32,6 +37,7 @@ public class House : Building
         spritePath = "Sprites/Human/House";
         health = 3.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1850;
+        rank = 2;
     }
 }
 
@@ -41,6 +47,7 @@ public class Trash : Building
         spritePath = "Sprites/Human/Trash";
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1950;
+        rank = -1;
     }
 }
 
@@ -50,6 +57,7 @@ public class Factory : Building
         spritePath = "Sprites/Human/Factory";
         health = 5.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1900;
+        rank = 3;
     }
 }
 
@@ -59,5 +67,6 @@ public class Skyscraper : Building
         spritePath = "Sprites/Human/Skyscraper";
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
+        rank = 4;
     }
 }
