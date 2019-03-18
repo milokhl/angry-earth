@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour {
     // Player state.
     // The currently clicked disaster type.
     private DisasterType selectedDisaster = DisasterType.NotSelected;
-    // private Type SelectedDisasterT = null;
 
     // Every time a button in the toolbar is clicked, it calls this method
     // with its DisasterType (see DisasterManager.cs)
@@ -62,12 +61,10 @@ public class GameManager : MonoBehaviour {
         activeTile = active;
         activeTile.Highlight(true);
 
-        //if the mouse button is held down, create a disaster in the correct section
+        // if the mouse button is held down, create a disaster in the correct section
         if (Input.GetMouseButtonDown(0))
         {
             int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
-            Debug.Log("here!");
-            Debug.Log(selectedDisaster);
 
             if (selectedDisaster != DisasterType.NotSelected) {
                 PlaceDisaster(activeI);
@@ -118,7 +115,7 @@ public class GameManager : MonoBehaviour {
 
             // Move the tile radially outward by earthRadius.
             Vector3 tileNormal = new Vector3(Mathf.Cos(tileCenterRad), Mathf.Sin(tileCenterRad), 0.0f);
-            Vector3 tilePos = (earthRadius + 0.5f *spriteHeight) * tileNormal;
+            Vector3 tilePos = (earthRadius + 0.5f *spriteHeight - 0.1f) * tileNormal;
             tile.transform.position = tilePos;
             tile.transform.rotation = tileRot;
 

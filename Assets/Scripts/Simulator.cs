@@ -11,7 +11,7 @@ public class Simulator : MonoBehaviour
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
     public float popGrowthFactor = 1.011f;
-    public float secondsPerYear = 1.0f; // 5 minutes to go 1800 -> 2100
+    public float secondsPerYear = 0.5f; // 5 minutes to go 1800 -> 2100
     public float initialTechLvl = 0.0f;
 
     // Current state.

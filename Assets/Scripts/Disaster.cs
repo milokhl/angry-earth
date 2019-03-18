@@ -34,7 +34,7 @@ public class Fire : Disaster
     public Fire() : base() {
         damage = 15.0f;
         cooldownTime = 10.0f;
-        altitude = 0.1f;
+        altitude = 0.3f;
         spritePath = "Sprites/Nature/Fire";
     }
 };
@@ -54,7 +54,7 @@ public class Tsunami : Disaster
     public Tsunami() : base() {
         damage = 40.0f;
         cooldownTime = 15.0f;
-        altitude = 0.0f;
+        altitude = 0.1f;
         spritePath = "Sprites/Nature/Tsunami";
     }
 };
