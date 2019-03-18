@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour {
         {DisasterType.Meteor, typeof(Meteor)}
     };
 
+    //slider used for xp
+    public GameObject xpSlider;
+
     public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
     {
         selectedDisaster = type;
@@ -74,6 +77,10 @@ public class GameManager : MonoBehaviour {
 
                 bool destroyed = active.Attack(instance);
                 if (destroyed) {
+                    //check for building type? don't want trees here
+                    xpSlider = GameObject.Find("XPSlider");
+                    XPSystem system = xpSlider.GetComponent<XPSystem>();
+                    system.EarnXP(active.building.xpGain);
                     activeTile.Destroy(instance);
                 }
             }
