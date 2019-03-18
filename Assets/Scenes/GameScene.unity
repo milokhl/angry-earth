@@ -1638,5 +1638,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff525011f36e26a41b04b111e42579dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disasterType: 0
+  disasterType: 1
   isUnlocked: 1
