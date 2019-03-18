@@ -39,7 +39,7 @@ public class ButtonController : MonoBehaviour
 
     // Decrements the countdown timer and re-enables the button
     // when it hits zero.
-    void FixedUpate()
+    void FixedUpdate()
     {
         if (countdown > 0.0f) {
             countdown -= Time.deltaTime;

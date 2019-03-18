@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour {
     //slider used for xp
     public GameObject xpSlider;
 
+    private Transform toolbar;
+
+
+
     public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
     {
         selectedDisaster = type;
@@ -45,8 +49,8 @@ public class GameManager : MonoBehaviour {
     public void Start()
     {
         InitializeTiles();
-
-        Transform toolbar = transform.Find("Toolbar");
+        toolbar = transform.Find("Toolbar");
+        xpSlider = GameObject.Find("XPSlider");
     }
 
     public void Update()
@@ -77,11 +81,16 @@ public class GameManager : MonoBehaviour {
 
                 bool destroyed = active.Attack(instance);
                 if (destroyed) {
-                    //check for building type? don't want trees here
-                    xpSlider = GameObject.Find("XPSlider");
                     XPSystem system = xpSlider.GetComponent<XPSystem>();
-                    system.EarnXP(active.building.xpGain);
+
+                    float xpLevel = system.EarnXP(active.building.xpGain);
+
                     activeTile.Destroy(instance);
+                    ToolbarManager tManager = toolbar.GetComponent<ToolbarManager>();
+                    if (xpLevel >= 1.0f) { tManager.UnlockButton(4);
+                    } else if (xpLevel >= 0.65f) { tManager.UnlockButton(3);
+                    } else if (xpLevel >= 0.25f) { tManager.UnlockButton(2);
+                    } else if (xpLevel >= 0.1f) { tManager.UnlockButton(1); } 
                 }
             }
         }

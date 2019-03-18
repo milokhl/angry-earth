@@ -32,4 +32,10 @@ public class ToolbarManager : MonoBehaviour
             }
         }
     }
+    public void UnlockButton(int buttonIndex)
+    {
+        buttons_[buttonIndex].GetComponent<ButtonController>().Unlock();
+
+    }
+
 }
