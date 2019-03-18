@@ -197,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -263,7 +263,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 71508fa35160d274aa075bf14d483241,
+      objectReference: {fileID: 21300000, guid: 329a7b7226c87d84b97ebefd84587f7d,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -542,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -595,12 +595,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4aceebff5bbbd944cb9f8314bf81803c,
+      objectReference: {fileID: 21300000, guid: 1b3c2b618274f9d4ea38f757a1987aab,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4989147134607314332, guid: 3799c9a58fd876c44a77c8ee1b62b33f, type: 3}
@@ -1006,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1062,7 +1062,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7a4ece0546ba25c4bb73d34acbbf3851,
+      objectReference: {fileID: 21300000, guid: 6e3235d41c07ad947b2d9841f19c21d9,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1292,7 +1292,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1348,7 +1348,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6f39723a21a7d9d4fa7e52c14490fde7,
+      objectReference: {fileID: 21300000, guid: 1c75576803177504c9cdbbafcfae18ac,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1524,7 +1524,7 @@ PrefabInstance:
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4481823693839024604, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1600,7 +1600,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5cbd7c311a4b6704da80e373502e7198,
+      objectReference: {fileID: 21300000, guid: 85e815ccb5f88354caf69b147dfba39a,
         type: 3}
     - target: {fileID: 4481823693839024606, guid: 3799c9a58fd876c44a77c8ee1b62b33f,
         type: 3}
@@ -1638,5 +1638,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff525011f36e26a41b04b111e42579dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disasterType: 1
+  disasterType: 0
   isUnlocked: 1

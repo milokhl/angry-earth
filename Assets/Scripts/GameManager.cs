@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
-
+            Debug.Log("here!");
             Debug.Log(selectedDisaster);
 
             if (selectedDisaster != DisasterType.NotSelected) {
