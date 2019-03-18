@@ -24,6 +24,23 @@ public class Simulator : MonoBehaviour
     private int targetGameoverYear = 2100;
     private float techGrowthFactor;
 
+    // Store the buildings that have been unlocked.
+    private List<Building> buildingTypes = new List<Building>() {
+        new Settlement(),
+        new House(),
+        new Trash(),
+        new Factory(),
+        new Skyscraper(),
+    };
+
+    private List<bool> buildingUnlockedMask = new List<bool>() {
+        false,
+        false,
+        false,
+        false,
+        false
+    };
+
     // Visual indicators.
     private Text populationMeter;
 
@@ -73,6 +90,15 @@ public class Simulator : MonoBehaviour
         // Update the technology level (don't do this at year 0).
         if (currentYear > initialYear) {
             techLvl += techGrowthFactor * population;
+        }
+
+        // Determine which buildings are unlocked.
+        for (int i = 0; i < buildingTypes.Count; ++i) {
+            Building btype = buildingTypes[i];
+            if (currentYear >= btype.unlockedYear) {
+                buildingUnlockedMask[i] = true;
+                Debug.Log(">>> UNLOCKED BUILDING: " + btype.GetType().Name);
+            }
         }
 
         populationMeter.text = "Year: " + currentYear +
