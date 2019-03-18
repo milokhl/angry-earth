@@ -919,7 +919,7 @@ MonoBehaviour:
   initialYear: 1800
   initialPopulation: 1000000000
   popGrowthFactor: 1.011
-  secondsPerYear: 1
+  secondsPerYear: 0.1
   initialTechLvl: 0
 --- !u!1 &1052964427
 GameObject:

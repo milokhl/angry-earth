@@ -11,7 +11,7 @@ public class Simulator : MonoBehaviour
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
     public float popGrowthFactor = 1.011f;
-    public float secondsPerYear = 0.5f; // 5 minutes to go 1800 -> 2100
+    public float secondsPerYear = 0.1f; // 5 minutes to go 1800 -> 2100
     public float initialTechLvl = 0.0f;
 
     // Current state.
@@ -42,8 +42,9 @@ public class Simulator : MonoBehaviour
         // gameoverTechLvl by targetGameoverYear. This equation assumes that the techLvl
         // increments at a rate proportional to the human population (techGrowthFactor).
         float numYrs = (float)(targetGameoverYear - initialYear);
-        techGrowthFactor = numYrs * (popGrowthFactor - 1) /
+        techGrowthFactor = gameoverTechLvl * (popGrowthFactor - 1) /
                            (initialPopulation * popGrowthFactor * (Mathf.Pow(popGrowthFactor, numYrs) - 1));
+        Debug.Log("Factor: " + techGrowthFactor);
 
         populationMeter = GameObject.Find("PopulationMeter").GetComponent<Text>();
 
