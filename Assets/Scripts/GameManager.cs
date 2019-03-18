@@ -80,6 +80,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void SetBuilding(int i, Building instance)
+    {
+        BuildingManager manager = tiles_[i].GetComponent<BuildingManager>();
+        manager.SetBuilding(instance);
+    }
+
+    public List<BuildingManager> BuildingManagers()
+    {
+        return tiles_;
+    }
+
     private void InitializeTiles()
     {
         // Tile angular width in degrees and radians.
@@ -107,7 +118,7 @@ public class GameManager : MonoBehaviour {
             // This allows us to instantiate the tile without knowing about the units / px of the sprite.
             float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
             float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
-            float tileScaleFactor = tileArcLength / spriteWidth;
+            float tileScaleFactor = tileArcLength / spriteWidth; // TODO: this isn't used??
 
             // Rotate and translate the tile so that it is on the edge of the earth.
             // Quaternion.Euler expects degrees!

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,10 +44,13 @@ public class Simulator : MonoBehaviour
 
     // Visual indicators.
     private Text populationMeter;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GetComponent<GameManager>();
+
         population = initialPopulation;
         currentYear = initialYear;
 
@@ -98,6 +102,20 @@ public class Simulator : MonoBehaviour
             if (currentYear >= btype.unlockedYear) {
                 buildingUnlockedMask[i] = true;
                 Debug.Log(">>> UNLOCKED BUILDING: " + btype.GetType().Name);
+            }
+        }
+
+        // Randomly upgrade tiles.
+        List<BuildingManager> managers = gameManager.BuildingManagers();
+        for (int i = 0; i < managers.Count; ++i) {
+            BuildingManager manager = managers[i];
+            Type btype = manager.building.GetType();
+            bool isEmpty = (btype == typeof(Building));
+
+            float initProbability = 0.01f;
+
+            if (isEmpty && UnityEngine.Random.Range(0f, 1f) < initProbability) {
+                gameManager.SetBuilding(i, new Settlement());
             }
         }
 
