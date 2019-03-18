@@ -14,7 +14,7 @@ public enum DisasterType
 // Base class for all disasters.
 public class Disaster
 {
-    public float damage = 10.0f;
+    public float damage = 1.0f * Building.BASE_HEALTH_UNIT;
     public float cooldownTime = 10.0f;
     public float altitude = 0.0f;
     public string spritePath = "Sprites/Nature/Thunderstorm";
@@ -23,7 +23,7 @@ public class Disaster
 public class Thunderstorm : Disaster
 {
     public Thunderstorm() : base() {
-        damage = 10.0f;
+        damage = Building.BASE_HEALTH_UNIT;
         cooldownTime = 10.0f;
         altitude = 0.5f;
         spritePath = "Sprites/Nature/Thunderstorm";
@@ -32,7 +32,7 @@ public class Thunderstorm : Disaster
 public class Fire : Disaster
 {
     public Fire() : base() {
-        damage = 15.0f;
+        damage = 2 * Building.BASE_HEALTH_UNIT;
         cooldownTime = 10.0f;
         altitude = 0.3f;
         spritePath = "Sprites/Nature/Fire";
@@ -42,7 +42,7 @@ public class Fire : Disaster
 public class Tornado : Disaster
 {
     public Tornado() : base() {
-        damage = 20.0f;
+        damage = 5.0f * Building.BASE_HEALTH_UNIT;
         cooldownTime = 5.0f;
         altitude = 0.4f;
         spritePath = "Sprites/Nature/Tornado";
@@ -52,7 +52,7 @@ public class Tornado : Disaster
 public class Tsunami : Disaster
 {
     public Tsunami() : base() {
-        damage = 40.0f;
+        damage = 10.0f * Building.BASE_HEALTH_UNIT;
         cooldownTime = 15.0f;
         altitude = 0.1f;
         spritePath = "Sprites/Nature/Tsunami";
@@ -62,7 +62,7 @@ public class Tsunami : Disaster
 public class Meteor : Disaster
 {
     public Meteor() : base() {
-        damage = 1000.0f;
+        damage = 100.0f * Building.BASE_HEALTH_UNIT;
         cooldownTime = 20.0f;
         altitude = 1.0f;
         spritePath = "Sprites/Nature/Meteor";

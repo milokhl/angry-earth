@@ -44,7 +44,6 @@ public class Simulator : MonoBehaviour
         float numYrs = (float)(targetGameoverYear - initialYear);
         techGrowthFactor = gameoverTechLvl * (popGrowthFactor - 1) /
                            (initialPopulation * popGrowthFactor * (Mathf.Pow(popGrowthFactor, numYrs) - 1));
-        Debug.Log("Factor: " + techGrowthFactor);
 
         populationMeter = GameObject.Find("PopulationMeter").GetComponent<Text>();
 
