@@ -85,8 +85,34 @@ public class Simulator : MonoBehaviour
         }
     }
 
+    // Randomly decide whether to initialize a building on an empty tile.
+    // Assumes that the "mid" building is empty.
+    private void BuildStochastic(int i, Building mid, Building left, Building right)
+    {
+        bool mEmpty = (mid.GetType() == typeof(Building));
+        bool lEmpty = (left.GetType() == typeof(Building));
+        bool rEmpty = (right.GetType() == typeof(Building));
+
+        // CASE 1: Empty square, decide whether to init.
+        if (mEmpty) {
+            float initProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
+            if (UnityEngine.Random.Range(0.0f, 1.0f) < initProbability) {
+                gameManager.SetBuilding(i, new Settlement());
+            }
+        }
+    }
+
+    private int WrapAround(int i, int max) {
+        if (i < 0) {
+            i = (36 + i);
+        } else if (i >= max) {
+            i = i % max;
+        }
+        return i;
+    }
+
     // Called at the end of every year.
-    void OnYearStart()
+    private void OnYearStart()
     {
         // Update the population.
         population = (long)((float)population * popGrowthFactor);
@@ -105,18 +131,17 @@ public class Simulator : MonoBehaviour
             }
         }
 
-        // Randomly upgrade tiles.
+        // Randomly upgrade/init tiles.
         List<BuildingManager> managers = gameManager.BuildingManagers();
         for (int i = 0; i < managers.Count; ++i) {
-            BuildingManager manager = managers[i];
-            Type btype = manager.building.GetType();
-            bool isEmpty = (btype == typeof(Building));
+            int l_index = WrapAround(i - 1, 36);
+            int r_index = WrapAround(i + 1, 36);
 
-            float initProbability = 0.01f;
+            Building mid = managers[i].building;
+            Building left = managers[l_index].building;
+            Building right = managers[r_index].building;
 
-            if (isEmpty && UnityEngine.Random.Range(0f, 1f) < initProbability) {
-                gameManager.SetBuilding(i, new Settlement());
-            }
+            BuildStochastic(i, mid, left, right);
         }
 
         populationMeter.text = "Year: " + currentYear +

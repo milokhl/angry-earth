@@ -108,12 +108,6 @@ public class GameManager : MonoBehaviour {
             GameObject tile = Instantiate(buildingPrefab);
             BuildingManager manager = tile.GetComponent<BuildingManager>();
 
-            // By default, tiles should show a tree (the base Building class).
-            // We can randomly override with a Settlement here.
-            if (UnityEngine.Random.Range(0f, 1f) < 0.25f) {
-                manager.building = new Settlement();
-            }
-
             // We want to scale the tile width so that it takes up all of the available arc length.
             // This allows us to instantiate the tile without knowing about the units / px of the sprite.
             float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
