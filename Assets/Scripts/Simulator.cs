@@ -25,6 +25,8 @@ public class Simulator : MonoBehaviour
     private int targetGameoverYear = 2100;
     private float techGrowthFactor;
 
+    private static System.Random rnd = new System.Random();
+
     // Store the buildings that have been unlocked.
     private List<Building> buildingTypes = new List<Building>() {
         new Settlement(),
@@ -85,6 +87,15 @@ public class Simulator : MonoBehaviour
         }
     }
 
+    private int SampleBuildingUniform()
+    {
+        List<int> available = new List<int>();
+        for (int i = 0; i < buildingTypes.Count; ++i) {
+            if (buildingUnlockedMask[i]) { available.Add(i); }
+        }
+        return rnd.Next(available.Count);
+    }
+
     // Randomly decide whether to initialize a building on an empty tile.
     // Assumes that the "mid" building is empty.
     private void BuildStochastic(int i, Building mid, Building left, Building right)
@@ -97,7 +108,9 @@ public class Simulator : MonoBehaviour
         if (mEmpty) {
             float initProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) < initProbability) {
-                gameManager.SetBuilding(i, new Settlement());
+                // Decided to init; choose which building to create.
+                int randomIdx = SampleBuildingUniform();
+                gameManager.SetBuilding(i, buildingTypes[randomIdx]);
             }
         }
     }
