@@ -10,7 +10,7 @@ public class Building
 {
     // This is the health of one settlement, which we measure other
     // buildings and disaster damages relative to.
-    public float BASE_HEALTH_UNIT = 1.0f;
+    public static float BASE_HEALTH_UNIT = 1.0f;
     public float health = 0;
     public string spritePath = "Sprites/Nature/Tree";
     public Building() {}
