@@ -35,7 +35,10 @@ public class BuildingManager : MonoBehaviour {
     // Access the sprite that is being rendered for this tile.
     public Sprite GetSprite()
     {
-        return GetComponent<SpriteRenderer>().sprite;
+        SpriteRenderer spr = GetComponent<SpriteRenderer>();
+        spr.sortingOrder = -1;
+        return spr.sprite;
+        //return GetComponent<SpriteRenderer>().sprite;
     }
     public bool Attack(Disaster disaster)
     {

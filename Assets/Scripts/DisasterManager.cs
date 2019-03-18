@@ -13,6 +13,8 @@ public class DisasterManager : MonoBehaviour
 
     public Sprite GetSprite()
     {
-        return GetComponent<SpriteRenderer>().sprite;
+        SpriteRenderer spr = GetComponent<SpriteRenderer>();
+        spr.sortingOrder = 1;
+        return spr.sprite;
     }
 }
