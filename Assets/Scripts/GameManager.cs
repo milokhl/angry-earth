@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     // Game mode switches.
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {            
             if (selectedDisaster == DisasterType.Meteor)
             {
-                Application.LoadLevel("winScene");
+                SceneManager.LoadScene("winScene");
             }
 
             int activeI = GetActiveIndex(mouse_in_world.x, mouse_in_world.y);
