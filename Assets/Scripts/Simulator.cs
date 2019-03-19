@@ -195,6 +195,12 @@ public class Simulator : MonoBehaviour
         population -= (long)(percent * (double)population);
     }
 
+    public void KillTechnology(float percent)
+    {
+        techLvl -= percent;
+        techLvl = Mathf.Max(0, techLvl);
+    }
+
     void OnGameOver()
     {
         Debug.Log("GAMEOVER! Humans reached max technology level.");
