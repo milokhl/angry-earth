@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour {
                     activeTile.Destroy(instance);
                     ToolbarManager tManager = toolbar.GetComponent<ToolbarManager>();
                     if (xpLevel >= 1.0f) { tManager.UnlockButton(4);
-                    } else if (xpLevel >= 0.65f) { tManager.UnlockButton(3);
+                    } else if (xpLevel >= 0.60f) { tManager.UnlockButton(3);
                     } else if (xpLevel >= 0.25f) { tManager.UnlockButton(2);
                     } else if (xpLevel >= 0.1f) { tManager.UnlockButton(1); } 
                 }
