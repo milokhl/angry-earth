@@ -37,7 +37,7 @@ public class Settlement : Building
 {
     public Settlement() : base() {
         spritePath = "Sprites/Human/Settlement";
-        xpGain = 1.0f;
+        xpGain = 0.5f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
         populationPct = 0.05f;
@@ -50,7 +50,7 @@ public class House : Building
 {
     public House() : base() {
         spritePath = "Sprites/Human/House";
-        xpGain = 3.0f;
+        xpGain = 1.0f;
         health = 3.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1850;
         populationPct = 0.1f;
@@ -63,7 +63,7 @@ public class Trash : Building
 {
     public Trash() : base() {
         spritePath = "Sprites/Human/Trash";
-        xpGain = 1.0f;
+        xpGain = 0.0f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1950;
         populationPct = 0.0f;
@@ -76,7 +76,7 @@ public class Factory : Building
 {
     public Factory() : base() {
         spritePath = "Sprites/Human/Factory";
-        xpGain = 5.0f;
+        xpGain = 3.0f;
         health = 5.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1900;
         populationPct = 0.01f;
@@ -89,7 +89,7 @@ public class Skyscraper : Building
 {
     public Skyscraper() : base() {
         spritePath = "Sprites/Human/Skyscraper";
-        xpGain = 10.0f;
+        xpGain = 5.0f;
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
         populationPct = 0.2f;

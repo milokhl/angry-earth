@@ -83,6 +83,11 @@ public class GameManager : MonoBehaviour {
 
         // if the mouse button is held down, create a disaster in the correct section
         if (Input.GetMouseButtonDown(0)) {            
+            if (selectedDisaster == DisasterType.Meteor)
+            {
+                Application.LoadLevel("winScene");
+            }
+
             int activeI = GetActiveIndex(mouse_in_world.x, mouse_in_world.y);
 
             Vector2 mouse_in_world_2d = new Vector2(mouse_in_world.x, mouse_in_world.y);
