@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public int numTiles = 36;
 
     private Camera camera;
+    private Simulator simulator;
 
     // Prefab for a generic building type.
     public GameObject buildingPrefab;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour {
         InitializeTiles();
         toolbar = transform.Find("Toolbar");
         xpSlider = GameObject.Find("XPSlider");
+        simulator = GetComponent<Simulator>();
         camera = Camera.main;
     }
 
@@ -105,10 +107,11 @@ public class GameManager : MonoBehaviour {
 
                 if (destroyed) {
                     XPSystem system = xpSlider.GetComponent<XPSystem>();
-
                     float xpLevel = system.EarnXP(active.building.xpGain);
+                    GetComponent<Simulator>().KillPopulation(active.building.populationPct);
 
                     activeTile.Destroy(instance);
+
                     ToolbarManager tManager = toolbar.GetComponent<ToolbarManager>();
                     if (xpLevel >= 1.0f) { tManager.UnlockButton(4);
                     } else if (xpLevel >= 0.60f) { tManager.UnlockButton(3);
@@ -142,10 +145,14 @@ public class GameManager : MonoBehaviour {
             float tileCenterRad = (float)i * tileRad;
 
             // Instantiate the tile and retrieve its BuildingManager script.
-            // For now, let's let tiles be randomly either a tree (75% chance) or a settlement (25% chance)
             UnityEngine.Random rand = new UnityEngine.Random();
             GameObject tile = Instantiate(buildingPrefab);
             BuildingManager manager = tile.GetComponent<BuildingManager>();
+
+            float initBuildingProb = 0.25f;
+            if (UnityEngine.Random.Range(0.0f, 1.0f) <= initBuildingProb) {
+                manager.SetBuilding(new Settlement());
+            }
 
             // We want to scale the tile width so that it takes up all of the available arc length.
             // This allows us to instantiate the tile without knowing about the units / px of the sprite.

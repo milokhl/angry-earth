@@ -133,8 +133,7 @@ public class Simulator : MonoBehaviour
             float upgradeProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= upgradeProbability) {
                 if (buildingUpgradeMap.ContainsKey(mid.GetType())) {
-                    Building upgrade = buildingUpgradeMap[mid.GetType()];
-                    gameManager.SetBuilding(i, upgrade);
+                    gameManager.SetBuilding(i, buildingUpgradeMap[mid.GetType()]);
                 }
             }
         }
@@ -188,6 +187,12 @@ public class Simulator : MonoBehaviour
         if (techLvl >= gameoverTechLvl) {
             OnGameOver();
         }
+    }
+
+    // Kill of a percentage of the population.
+    public void KillPopulation(float percent)
+    {
+        population -= (long)(percent * (double)population);
     }
 
     void OnGameOver()
