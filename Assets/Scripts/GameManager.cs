@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour {
 
     // Every time a button in the toolbar is clicked, it calls this method
     // with its DisasterType (see DisasterManager.cs)
-    private Dictionary<DisasterType, Type> DisasterTypeToClass = new Dictionary<DisasterType, Type>
-    {
+    private Dictionary<DisasterType, Type> DisasterTypeToClass =
+        new Dictionary<DisasterType, Type> {
         {DisasterType.Thunderstorm, typeof(Thunderstorm)},
         {DisasterType.Fire, typeof(Fire)},
         {DisasterType.Tornado, typeof(Tornado)},
@@ -68,12 +68,10 @@ public class GameManager : MonoBehaviour {
 
     public void Update()
     {
-        Vector2 mousePos = Input.mousePosition;
-
         // The mouse position is in screen pixel coordinates, and we need to
         // center it relative to the world.
-        Vector3 centeredPos = MouseInWorld();
-        BuildingManager active = GetActiveTile(centeredPos.x, centeredPos.y);
+        Vector3 mouse_in_world = MouseInWorld();
+        BuildingManager active = GetActiveTile(mouse_in_world.x, mouse_in_world.y);
 
         if (activeTile != null) {
             activeTile.Highlight(false); // Turn off previously active tile.
@@ -83,14 +81,20 @@ public class GameManager : MonoBehaviour {
 
         // if the mouse button is held down, create a disaster in the correct section
         if (Input.GetMouseButtonDown(0)) {            
-            int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
+            int activeI = GetActiveIndex(mouse_in_world.x, mouse_in_world.y);
 
-            if (selectedDisaster != DisasterType.NotSelected) {
+            Vector2 mouse_in_world_2d = new Vector2(mouse_in_world.x, mouse_in_world.y);
+            float clickRadius = mouse_in_world_2d.magnitude;
+
+            if (selectedDisaster != DisasterType.NotSelected &&
+                    clickRadius >= earthRadius &&
+                    clickRadius <= 2*earthRadius) {
+
                 PlaceDisaster(activeI);
 
                 Type SelectedDisasterT = DisasterTypeToClass[selectedDisaster];
                 Disaster instance = (Disaster)Activator.CreateInstance(SelectedDisasterT);
-                
+
                 // Start the disaster cooldown.
                 if (enableCooldown) {
                     selectedButton.DisableForCountdown(instance.cooldownTime);
@@ -210,7 +214,7 @@ public class GameManager : MonoBehaviour {
         manager.disaster = (Disaster)Activator.CreateInstance(SelectedDisasterT); // Give the disaster a type.
 
         // Countdown to destroy the disaster.
-        Destroy(disaster, 1.0f);
+        Destroy(disaster, 2.0f);
 
         float spriteWidth = manager.GetSprite().bounds.max[0] - manager.GetSprite().bounds.min[0];
         float spriteHeight = manager.GetSprite().bounds.max[1] - manager.GetSprite().bounds.min[1];
