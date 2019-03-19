@@ -24,7 +24,7 @@ public class Thunderstorm : Disaster
 {
     public Thunderstorm() : base() {
         damage = Building.BASE_HEALTH_UNIT;
-        cooldownTime = 1.0f;
+        cooldownTime = 0.5f;
         altitude = 0.5f;
         spritePath = "Sprites/Nature/Thunderstorm";
     }

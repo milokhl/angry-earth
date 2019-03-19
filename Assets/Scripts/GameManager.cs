@@ -105,10 +105,11 @@ public class GameManager : MonoBehaviour {
 
                 if (destroyed) {
                     XPSystem system = xpSlider.GetComponent<XPSystem>();
-
                     float xpLevel = system.EarnXP(active.building.xpGain);
+                    GetComponent<Simulator>().KillPopulation(active.building.populationPct);
 
                     activeTile.Destroy(instance);
+
                     ToolbarManager tManager = toolbar.GetComponent<ToolbarManager>();
                     if (xpLevel >= 1.0f) { tManager.UnlockButton(4);
                     } else if (xpLevel >= 0.60f) { tManager.UnlockButton(3);

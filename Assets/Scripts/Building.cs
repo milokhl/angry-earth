@@ -27,8 +27,8 @@ public class Building
     // of a higher rank.
     public int rank = 0;
     public int unlockedYear = 1700;
+    public float populationPct = 0.0f;
     public string spritePath = "Sprites/Nature/Tree";
-    public string debugName = "Building";
     public Building() {}
 };
 
@@ -39,6 +39,7 @@ public class Settlement : Building
         xpGain = 1.0f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
+        populationPct = 0.05f;
         rank = 1;
     }
 }
@@ -50,6 +51,7 @@ public class House : Building
         xpGain = 3.0f;
         health = 3.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1850;
+        populationPct = 0.09f;
         rank = 2;
     }
 }
@@ -61,6 +63,7 @@ public class Trash : Building
         xpGain = 1.0f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1950;
+        populationPct = 0.0f;
         rank = -1;
     }
 }
@@ -72,6 +75,7 @@ public class Factory : Building
         xpGain = 5.0f;
         health = 5.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1900;
+        populationPct = 0.01f;
         rank = 3;
     }
 }
@@ -83,6 +87,7 @@ public class Skyscraper : Building
         xpGain = 10.0f;
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
+        populationPct = 0.2f;
         rank = 4;
     }
 }
