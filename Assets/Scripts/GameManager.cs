@@ -108,7 +108,9 @@ public class GameManager : MonoBehaviour {
                 if (destroyed) {
                     XPSystem system = xpSlider.GetComponent<XPSystem>();
                     float xpLevel = system.EarnXP(active.building.xpGain);
-                    GetComponent<Simulator>().KillPopulation(active.building.populationPct);
+
+                    simulator.KillPopulation(active.building.populationPct);
+                    simulator.KillTechnology(active.building.technologyPct);
 
                     activeTile.Destroy(instance);
 

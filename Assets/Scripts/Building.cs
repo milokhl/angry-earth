@@ -28,6 +28,7 @@ public class Building
     public int rank = 0;
     public int unlockedYear = 1700;
     public float populationPct = 0.0f;
+    public float technologyPct = 0.0f; // Note: out of 100 (sorry)
     public string spritePath = "Sprites/Nature/Tree";
     public Building() {}
 };
@@ -40,6 +41,7 @@ public class Settlement : Building
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
         populationPct = 0.05f;
+        technologyPct = 0.2f;
         rank = 1;
     }
 }
@@ -51,7 +53,8 @@ public class House : Building
         xpGain = 3.0f;
         health = 3.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1850;
-        populationPct = 0.09f;
+        populationPct = 0.1f;
+        technologyPct = 0.5f;
         rank = 2;
     }
 }
@@ -64,6 +67,7 @@ public class Trash : Building
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1950;
         populationPct = 0.0f;
+        technologyPct = 0.0f;
         rank = -1;
     }
 }
@@ -76,6 +80,7 @@ public class Factory : Building
         health = 5.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1900;
         populationPct = 0.01f;
+        technologyPct = 5.0f;
         rank = 3;
     }
 }
@@ -88,6 +93,7 @@ public class Skyscraper : Building
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
         populationPct = 0.2f;
+        technologyPct = 3.0f;
         rank = 4;
     }
 }
