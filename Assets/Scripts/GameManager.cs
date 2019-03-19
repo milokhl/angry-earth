@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    // Game mode switches.
+    bool enableCooldown = true;
+
     private float earthRadius = 5.0f;
 
     // The number of tiles on earth's surface.
     public int numTiles = 36;
+
+    private Camera camera;
 
     // Prefab for a generic building type.
     public GameObject buildingPrefab;
@@ -21,6 +26,7 @@ public class GameManager : MonoBehaviour {
     // Player state.
     // The currently clicked disaster type.
     private DisasterType selectedDisaster = DisasterType.NotSelected;
+    private ButtonController selectedButton = null;
 
     // Every time a button in the toolbar is clicked, it calls this method
     // with its DisasterType (see DisasterManager.cs)
@@ -33,16 +39,15 @@ public class GameManager : MonoBehaviour {
         {DisasterType.Meteor, typeof(Meteor)}
     };
 
-    //slider used for xp
+    // slider used for xp
     public GameObject xpSlider;
 
     private Transform toolbar;
 
-
-
     public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
     {
         selectedDisaster = type;
+        selectedButton = controller;
     }
 
     // Start is called before the first frame update
@@ -51,6 +56,14 @@ public class GameManager : MonoBehaviour {
         InitializeTiles();
         toolbar = transform.Find("Toolbar");
         xpSlider = GameObject.Find("XPSlider");
+        camera = Camera.main;
+    }
+
+    // Get the mouse position in world coordinates.
+    public Vector3 MouseInWorld()
+    {
+        return camera.ScreenToWorldPoint(
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y, camera.nearClipPlane));
     }
 
     public void Update()
@@ -59,7 +72,7 @@ public class GameManager : MonoBehaviour {
 
         // The mouse position is in screen pixel coordinates, and we need to
         // center it relative to the world.
-        Vector2 centeredPos = mousePos - 0.5f * new Vector2(Screen.width, Screen.height);
+        Vector3 centeredPos = MouseInWorld();
         BuildingManager active = GetActiveTile(centeredPos.x, centeredPos.y);
 
         if (activeTile != null) {
@@ -69,8 +82,7 @@ public class GameManager : MonoBehaviour {
         activeTile.Highlight(true);
 
         // if the mouse button is held down, create a disaster in the correct section
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (Input.GetMouseButtonDown(0)) {            
             int activeI = GetActiveIndex(centeredPos.x, centeredPos.y);
 
             if (selectedDisaster != DisasterType.NotSelected) {
@@ -78,8 +90,15 @@ public class GameManager : MonoBehaviour {
 
                 Type SelectedDisasterT = DisasterTypeToClass[selectedDisaster];
                 Disaster instance = (Disaster)Activator.CreateInstance(SelectedDisasterT);
+                
+                // Start the disaster cooldown.
+                if (enableCooldown) {
+                    selectedButton.DisableForCountdown(instance.cooldownTime);
+                    selectedDisaster = DisasterType.NotSelected;
+                }
 
                 bool destroyed = active.Attack(instance);
+
                 if (destroyed) {
                     XPSystem system = xpSlider.GetComponent<XPSystem>();
 
