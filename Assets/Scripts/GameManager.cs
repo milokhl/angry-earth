@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    // Game mode switches.
+    bool enableCooldown = true;
+
     private float earthRadius = 5.0f;
 
     // The number of tiles on earth's surface.
@@ -21,6 +24,7 @@ public class GameManager : MonoBehaviour {
     // Player state.
     // The currently clicked disaster type.
     private DisasterType selectedDisaster = DisasterType.NotSelected;
+    private ButtonController selectedButton = null;
 
     // Every time a button in the toolbar is clicked, it calls this method
     // with its DisasterType (see DisasterManager.cs)
@@ -33,16 +37,15 @@ public class GameManager : MonoBehaviour {
         {DisasterType.Meteor, typeof(Meteor)}
     };
 
-    //slider used for xp
+    // slider used for xp
     public GameObject xpSlider;
 
     private Transform toolbar;
 
-
-
     public void DisasterButtonClickHandler(DisasterType type, ButtonController controller)
     {
         selectedDisaster = type;
+        selectedButton = controller;
     }
 
     // Start is called before the first frame update
@@ -78,8 +81,14 @@ public class GameManager : MonoBehaviour {
 
                 Type SelectedDisasterT = DisasterTypeToClass[selectedDisaster];
                 Disaster instance = (Disaster)Activator.CreateInstance(SelectedDisasterT);
+                
+                // Start the disaster cooldown.
+                if (enableCooldown) {
+                    selectedButton.DisableForCountdown(instance.cooldownTime);
+                }
 
                 bool destroyed = active.Attack(instance);
+
                 if (destroyed) {
                     XPSystem system = xpSlider.GetComponent<XPSystem>();
 
