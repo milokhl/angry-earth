@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Simulator : MonoBehaviour
 {
@@ -204,5 +205,6 @@ public class Simulator : MonoBehaviour
     void OnGameOver()
     {
         Debug.Log("GAMEOVER! Humans reached max technology level.");
+        SceneManager.LoadScene("loseScene");
     }
 }
