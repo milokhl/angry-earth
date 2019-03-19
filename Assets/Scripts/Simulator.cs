@@ -192,7 +192,6 @@ public class Simulator : MonoBehaviour
     // Kill of a percentage of the population.
     public void KillPopulation(float percent)
     {
-        Debug.Log(percent);
         population -= (long)(percent * (double)population);
     }
 

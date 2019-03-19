@@ -13,7 +13,6 @@ public class BuildingManager : MonoBehaviour {
         // For now, the Halo component is what's used for highlighting.
         // We might want to change this later on.
         halo = (Behaviour)GetComponent("Halo");
-        SetBuilding(new Building());
     }
 
     // Update is called once per frame
