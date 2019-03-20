@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Simulator : MonoBehaviour
 {
-    private const float e = 2.7182818f;
-
     // Initial state.
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
@@ -25,6 +23,8 @@ public class Simulator : MonoBehaviour
     private float gameoverTechLvl = 100.0f;
     private int targetGameoverYear = 2100;
     private float techGrowthFactor;
+
+    public Slider technologySlider;
 
     private static System.Random rnd = new System.Random();
 
@@ -104,6 +104,8 @@ public class Simulator : MonoBehaviour
             // Trigger any actions that occur at the start of the year.
             OnYearStart();
         }
+
+        technologySlider.value = 0.01f * techLvl;
     }
 
     private int SampleBuildingUniform()
@@ -208,9 +210,15 @@ public class Simulator : MonoBehaviour
         techLvl = Mathf.Max(0, techLvl);
     }
 
-    void OnGameOver()
+    private void GotoLoseScreen()
+    {
+        SceneManager.LoadScene("loseScene");
+    }
+
+    private void OnGameOver()
     {
         Debug.Log("GAMEOVER! Humans reached max technology level.");
-        SceneManager.LoadScene("loseScene");
+        gameManager.OnGameOver();
+        Invoke("GotoLoseScreen", 5.0f);
     }
 }
