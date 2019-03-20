@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Text: "You are the Earth. Destroy the humans \n  with natural disasters before
     they kill\n          you with a nuclear bomb!\n\n1. Click on one of the disaster
     buttons on the \ntoolbar on the left and click on the area that \nyou want to
-    destroy\n\n2. Defeat humans to gain XP to unlock\nmore abilities\n\nNote: The
-    power level for each disaster is in\nascending order! "
+    destroy.\n\n2. Destroy buildings to gain XP and unlock\nmore abilities. Each building
+    has a different amount of population and technology inside of it."
 --- !u!222 &249572985
 CanvasRenderer:
   m_ObjectHideFlags: 0
