@@ -11,7 +11,7 @@ public class Simulator : MonoBehaviour
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
     public float popGrowthFactor = 1.011f;
-    public float secondsPerYear = 0.1f; // 5 minutes to go 1800 -> 2100
+    public float secondsPerYear = 0.5f; // 5 minutes to go 1800 -> 2100
     public float initialTechLvl = 0.0f;
 
     // Current state.
@@ -129,10 +129,11 @@ public class Simulator : MonoBehaviour
         // We decide whether to initialize a building with some probability,
         // then uniformly choose from the available buildings.
         if (mEmpty) {
-            float initProbability = (lEmpty && rEmpty) ? 0.003f : 0.006f;
+            float initProbability = (lEmpty && rEmpty) ? 0.008f : 0.015f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= initProbability) {
                 int randomIdx = SampleBuildingUniform();
-                gameManager.SetBuilding(i, buildingTypes[randomIdx]);
+                Building clone = (Building)Activator.CreateInstance(buildingTypes[randomIdx].GetType());
+                gameManager.SetBuilding(i, clone);
             }
         
         // CASE 2: Square has a building, upgrade it with some probability.
@@ -140,7 +141,10 @@ public class Simulator : MonoBehaviour
             float upgradeProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= upgradeProbability) {
                 if (buildingUpgradeMap.ContainsKey(mid.GetType())) {
-                    gameManager.SetBuilding(i, buildingUpgradeMap[mid.GetType()]);
+                    Building clone = (Building)Activator.CreateInstance(buildingUpgradeMap[mid.GetType()].GetType());
+                    if (currentYear >= clone.unlockedYear) {
+                        gameManager.SetBuilding(i, clone);
+                    }
                 }
             }
         }
@@ -170,6 +174,7 @@ public class Simulator : MonoBehaviour
         for (int i = 0; i < buildingTypes.Count; ++i) {
             Building btype = buildingTypes[i];
             if (currentYear >= btype.unlockedYear) {
+                Debug.Log("Humans unlocked: " + btype.GetType());
                 buildingUnlockedMask[i] = true;
             }
         }
@@ -190,8 +195,7 @@ public class Simulator : MonoBehaviour
         double populationReadable = Math.Round((double)population / 1e9, 3);
 
         populationMeter.text = "Year: " + currentYear +
-                        "\nPopulation: " + populationReadable + " billion" +
-                        "\nTechnology: " + techLvl;
+                        "\nPopulation: " + populationReadable + " billion";
 
         if (techLvl >= gameoverTechLvl) {
             OnGameOver();

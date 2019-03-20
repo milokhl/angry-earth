@@ -883,8 +883,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -194, y: -100}
-  m_SizeDelta: {x: 342.1, y: 49.4}
+  m_AnchoredPosition: {x: -205.24, y: -113.57}
+  m_SizeDelta: {x: 389.51, y: 87.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769263187
 MonoBehaviour:
@@ -908,11 +908,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 100
+    m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 199
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialYear: 1800
   initialPopulation: 1000000000
-  popGrowthFactor: 1.008
+  popGrowthFactor: 1.011
   secondsPerYear: 0.5
   initialTechLvl: 0
   technologySlider: {fileID: 1290544084}
