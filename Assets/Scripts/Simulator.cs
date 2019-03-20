@@ -11,7 +11,7 @@ public class Simulator : MonoBehaviour
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
     public float popGrowthFactor = 1.011f;
-    public float secondsPerYear = 0.1f; // 5 minutes to go 1800 -> 2100
+    public float secondsPerYear = 0.5f; // 5 minutes to go 1800 -> 2100
     public float initialTechLvl = 0.0f;
 
     // Current state.
@@ -142,7 +142,9 @@ public class Simulator : MonoBehaviour
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= upgradeProbability) {
                 if (buildingUpgradeMap.ContainsKey(mid.GetType())) {
                     Building clone = (Building)Activator.CreateInstance(buildingUpgradeMap[mid.GetType()].GetType());
-                    gameManager.SetBuilding(i, clone);
+                    if (currentYear >= clone.unlockedYear) {
+                        gameManager.SetBuilding(i, clone);
+                    }
                 }
             }
         }
@@ -172,6 +174,7 @@ public class Simulator : MonoBehaviour
         for (int i = 0; i < buildingTypes.Count; ++i) {
             Building btype = buildingTypes[i];
             if (currentYear >= btype.unlockedYear) {
+                Debug.Log("Humans unlocked: " + btype.GetType());
                 buildingUnlockedMask[i] = true;
             }
         }

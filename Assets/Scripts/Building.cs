@@ -28,10 +28,10 @@ public class Farm : Building
     public Farm() : base() {
         spritePath = "Sprites/Human/Farm";
         xpGain = 0.5f;
-        health = 1.0f * BASE_HEALTH_UNIT;
+        health = 2.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
         populationPct = 0.01f;
-        technologyPct = 0.2f;
+        technologyPct = 0.1f;
     }
 }
 
@@ -42,7 +42,7 @@ public class Settlement : Building
         xpGain = 0.5f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
-        populationPct = 0.05f;
+        populationPct = 0.02f;
         technologyPct = 0.2f;
     }
 }
@@ -54,8 +54,8 @@ public class House : Building
         xpGain = 1.0f;
         health = 3.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1850;
-        populationPct = 0.1f;
-        technologyPct = 0.5f;
+        populationPct = 0.05f;
+        technologyPct = 0.4f;
     }
 }
 
@@ -76,10 +76,10 @@ public class Factory : Building
     public Factory() : base() {
         spritePath = "Sprites/Human/Factory";
         xpGain = 3.0f;
-        health = 5.0f * BASE_HEALTH_UNIT;
+        health = 6.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1900;
         populationPct = 0.01f;
-        technologyPct = 5.0f;
+        technologyPct = 3.0f;
     }
 }
 
@@ -90,7 +90,7 @@ public class Skyscraper : Building
         xpGain = 5.0f;
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
-        populationPct = 0.2f;
-        technologyPct = 3.0f;
+        populationPct = 0.1f;
+        technologyPct = 1.0f;
     }
 }

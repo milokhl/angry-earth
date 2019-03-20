@@ -42,7 +42,7 @@ public class Fire : Disaster
 public class Tornado : Disaster
 {
     public Tornado() : base() {
-        damage = 5.0f * Building.BASE_HEALTH_UNIT;
+        damage = 3 * Building.BASE_HEALTH_UNIT;
         cooldownTime = 3.0f;
         altitude = 0.4f;
         spritePath = "Sprites/Nature/Tornado";
@@ -52,7 +52,7 @@ public class Tornado : Disaster
 public class Tsunami : Disaster
 {
     public Tsunami() : base() {
-        damage = 10.0f * Building.BASE_HEALTH_UNIT;
+        damage = 4f * Building.BASE_HEALTH_UNIT;
         cooldownTime = 6.0f;
         altitude = 0.1f;
         spritePath = "Sprites/Nature/Tsunami";
