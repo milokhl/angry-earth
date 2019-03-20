@@ -105,6 +105,7 @@ public class Simulator : MonoBehaviour
             OnYearStart();
         }
 
+        Debug.Log(techLvl);
         technologySlider.value = 0.01f * techLvl;
     }
 
