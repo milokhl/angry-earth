@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Simulator : MonoBehaviour
 {
-    private const float e = 2.7182818f;
-
     // Initial state.
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
@@ -208,9 +206,15 @@ public class Simulator : MonoBehaviour
         techLvl = Mathf.Max(0, techLvl);
     }
 
-    void OnGameOver()
+    private void GotoLoseScreen()
+    {
+        SceneManager.LoadScene("loseScene");
+    }
+
+    private void OnGameOver()
     {
         Debug.Log("GAMEOVER! Humans reached max technology level.");
-        SceneManager.LoadScene("loseScene");
+        gameManager.OnGameOver();
+        Invoke("GotoLoseScreen", 5.0f);
     }
 }
