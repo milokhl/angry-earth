@@ -129,7 +129,7 @@ public class Simulator : MonoBehaviour
         // We decide whether to initialize a building with some probability,
         // then uniformly choose from the available buildings.
         if (mEmpty) {
-            float initProbability = (lEmpty && rEmpty) ? 0.003f : 0.006f;
+            float initProbability = (lEmpty && rEmpty) ? 0.006f : 0.01f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= initProbability) {
                 int randomIdx = SampleBuildingUniform();
                 Building clone = (Building)Activator.CreateInstance(buildingTypes[randomIdx].GetType());
