@@ -24,6 +24,8 @@ public class Simulator : MonoBehaviour
     private int targetGameoverYear = 2100;
     private float techGrowthFactor;
 
+    public Slider technologySlider;
+
     private static System.Random rnd = new System.Random();
 
     // Store the buildings that have been unlocked.
@@ -102,6 +104,8 @@ public class Simulator : MonoBehaviour
             // Trigger any actions that occur at the start of the year.
             OnYearStart();
         }
+
+        technologySlider.value = 0.01f * techLvl;
     }
 
     private int SampleBuildingUniform()

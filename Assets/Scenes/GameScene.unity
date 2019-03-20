@@ -1072,6 +1072,7 @@ MonoBehaviour:
   popGrowthFactor: 1.008
   secondsPerYear: 0.5
   initialTechLvl: 0
+  technologySlider: {fileID: 1290544084}
 --- !u!1 &845154791
 GameObject:
   m_ObjectHideFlags: 0
