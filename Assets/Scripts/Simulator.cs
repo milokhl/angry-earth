@@ -132,7 +132,8 @@ public class Simulator : MonoBehaviour
             float initProbability = (lEmpty && rEmpty) ? 0.003f : 0.006f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= initProbability) {
                 int randomIdx = SampleBuildingUniform();
-                gameManager.SetBuilding(i, buildingTypes[randomIdx]);
+                Building clone = (Building)Activator.CreateInstance(buildingTypes[randomIdx].GetType());
+                gameManager.SetBuilding(i, clone);
             }
         
         // CASE 2: Square has a building, upgrade it with some probability.
@@ -140,7 +141,8 @@ public class Simulator : MonoBehaviour
             float upgradeProbability = (lEmpty && rEmpty) ? 0.005f : 0.01f;
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= upgradeProbability) {
                 if (buildingUpgradeMap.ContainsKey(mid.GetType())) {
-                    gameManager.SetBuilding(i, buildingUpgradeMap[mid.GetType()]);
+                    Building clone = (Building)Activator.CreateInstance(buildingUpgradeMap[mid.GetType()].GetType());
+                    gameManager.SetBuilding(i, clone);
                 }
             }
         }
