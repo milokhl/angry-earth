@@ -23,6 +23,7 @@ public class Building
     public Building() {}
 };
 
+// Farm: Tiny population, tiny technology.
 public class Farm : Building
 {
     public Farm() : base() {
@@ -30,11 +31,12 @@ public class Farm : Building
         xpGain = 0.5f;
         health = 2.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
-        populationPct = 0.02f;
+        populationPct = 0.01f;
         technologyPct = 0.1f;
     }
 }
 
+// Settlement: Small population, small technology.
 public class Settlement : Building
 {
     public Settlement() : base() {
@@ -42,11 +44,12 @@ public class Settlement : Building
         xpGain = 0.5f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
-        populationPct = 0.03f;
+        populationPct = 0.02f;
         technologyPct = 0.2f;
     }
 }
 
+// House: Medium population, small technology.
 public class House : Building
 {
     public House() : base() {
@@ -59,6 +62,7 @@ public class House : Building
     }
 }
 
+// Trash: No population or technology... pretty much a decoy.
 public class Trash : Building
 {
     public Trash() : base() {
@@ -71,6 +75,7 @@ public class Trash : Building
     }
 }
 
+// Factory: Low population, high technology!
 public class Factory : Building
 {
     public Factory() : base() {
@@ -83,11 +88,13 @@ public class Factory : Building
     }
 }
 
+// Skyscraper: High population, medium high technology.
+// Really high xp, since they're hard to destroy.
 public class Skyscraper : Building
 {
     public Skyscraper() : base() {
         spritePath = "Sprites/Human/Skyscraper";
-        xpGain = 5.0f;
+        xpGain = 6.0f;
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
         populationPct = 0.1f;
