@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     private BuildingManager activeTile = null;
 
     public GameObject disasterPrefab;
+    public GameObject nukePrefab;
     
     // Player state.
     // The currently clicked disaster type.
@@ -273,5 +274,27 @@ public class GameManager : MonoBehaviour {
 
         int closest_idx = (belowDelta <= aboveDelta) ? below : above;
         return closest_idx;
+    }
+
+    public void OnGameOver()
+    {
+        // Tile angular width in degrees and radians.
+        float tileDeg = 360.0f / numTiles;
+        float tileRad = tileDeg * Mathf.PI / 180.0f;
+        float tileArcLength = tileRad * earthRadius;
+
+        for (int i = 0; i < numTiles; ++i) {
+            float tileCenterDeg = (float)i * tileDeg - 90.0f;
+            float tileCenterRad = (float)i * tileRad;
+
+            if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.4f) {
+                GameObject nuke = Instantiate(nukePrefab);
+                Quaternion tileRot = Quaternion.Euler(0, 0, tileCenterDeg);
+                Vector3 tileNormal = new Vector3(Mathf.Cos(tileCenterRad), Mathf.Sin(tileCenterRad), 0.0f);
+                Vector3 tilePos = (earthRadius - 0.1f) * tileNormal;
+                nuke.transform.position = tilePos;
+                nuke.transform.rotation = tileRot;
+            }
+        }
     }
 }

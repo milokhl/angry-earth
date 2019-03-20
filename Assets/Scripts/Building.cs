@@ -1,16 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum BuildingType
-{
-    NotSelected,
-    Settlement,
-    House,
-    Factory,
-    Skyscraper
-
-}
-
 // The base class for buildings. Displays a blank tile (tree) by default.
 // All other buildings should derive from this class and override
 // the constructor with their own sprite file and other properties.
@@ -33,6 +23,18 @@ public class Building
     public Building() {}
 };
 
+public class Farm : Building
+{
+    public Farm() : base() {
+        spritePath = "Sprites/Human/Farm";
+        xpGain = 0.5f;
+        health = 1.0f * BASE_HEALTH_UNIT;
+        unlockedYear = 1800;
+        populationPct = 0.01f;
+        technologyPct = 0.2f;
+    }
+}
+
 public class Settlement : Building
 {
     public Settlement() : base() {
@@ -42,7 +44,6 @@ public class Settlement : Building
         unlockedYear = 1800;
         populationPct = 0.05f;
         technologyPct = 0.2f;
-        rank = 1;
     }
 }
 
@@ -55,7 +56,6 @@ public class House : Building
         unlockedYear = 1850;
         populationPct = 0.1f;
         technologyPct = 0.5f;
-        rank = 2;
     }
 }
 
@@ -68,7 +68,6 @@ public class Trash : Building
         unlockedYear = 1950;
         populationPct = 0.0f;
         technologyPct = 0.0f;
-        rank = -1;
     }
 }
 
@@ -81,7 +80,6 @@ public class Factory : Building
         unlockedYear = 1900;
         populationPct = 0.01f;
         technologyPct = 5.0f;
-        rank = 3;
     }
 }
 
@@ -94,6 +92,5 @@ public class Skyscraper : Building
         unlockedYear = 1980;
         populationPct = 0.2f;
         technologyPct = 3.0f;
-        rank = 4;
     }
 }

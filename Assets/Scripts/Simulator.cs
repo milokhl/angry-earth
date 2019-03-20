@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Simulator : MonoBehaviour
 {
-    private const float e = 2.7182818f;
-
     // Initial state.
     public int initialYear = 1800;
     public long initialPopulation = 1000000000;
@@ -26,11 +24,14 @@ public class Simulator : MonoBehaviour
     private int targetGameoverYear = 2100;
     private float techGrowthFactor;
 
+    public Slider technologySlider;
+
     private static System.Random rnd = new System.Random();
 
     // Store the buildings that have been unlocked.
     private List<Building> buildingTypes = new List<Building>() {
         new Settlement(),
+        new Farm(),
         new House(),
         new Trash(),
         new Factory(),
@@ -42,10 +43,12 @@ public class Simulator : MonoBehaviour
         false,
         false,
         false,
+        false,
         false
     };
 
     private Dictionary<Type, Building> buildingUpgradeMap = new Dictionary<Type, Building> {
+        {typeof(Farm), new Settlement()},
         {typeof(Settlement), new House()},
         {typeof(House), new Factory()},
         {typeof(Factory), new Skyscraper()}
@@ -53,9 +56,10 @@ public class Simulator : MonoBehaviour
 
     private List<int> upgradeIndex = new List<int>() {
         1, // 0 --> 1
-        3, // 1 --> 3
+        2, // 1 --> 2
+        4, // 2 --> 4
         -1, // Trash doesn't upgrade
-        4,
+        5, // Factory --> Skyscraper
         -1 // Skyscraper doesn't upgrade
     };
 
@@ -100,6 +104,8 @@ public class Simulator : MonoBehaviour
             // Trigger any actions that occur at the start of the year.
             OnYearStart();
         }
+
+        technologySlider.value = 0.01f * techLvl;
     }
 
     private int SampleBuildingUniform()
@@ -204,9 +210,15 @@ public class Simulator : MonoBehaviour
         techLvl = Mathf.Max(0, techLvl);
     }
 
-    void OnGameOver()
+    private void GotoLoseScreen()
+    {
+        SceneManager.LoadScene("loseScene");
+    }
+
+    private void OnGameOver()
     {
         Debug.Log("GAMEOVER! Humans reached max technology level.");
-        SceneManager.LoadScene("loseScene");
+        gameManager.OnGameOver();
+        Invoke("GotoLoseScreen", 5.0f);
     }
 }
