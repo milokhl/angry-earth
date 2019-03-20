@@ -181,8 +181,10 @@ public class Simulator : MonoBehaviour
             BuildStochastic(i, mid, left, right);
         }
 
+        double populationReadable = Math.Round((double)population / 1e9, 3);
+
         populationMeter.text = "Year: " + currentYear +
-                        "\nPopulation: " + population +
+                        "\nPopulation: " + populationReadable + " billion" +
                         "\nTechnology: " + techLvl;
 
         if (techLvl >= gameoverTechLvl) {
