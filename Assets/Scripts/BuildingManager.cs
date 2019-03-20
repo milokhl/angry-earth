@@ -36,6 +36,7 @@ public class BuildingManager : MonoBehaviour {
         spr.sortingOrder = -1;
         return spr.sprite;
     }
+    
     public bool Attack(Disaster disaster)
     {
         building.health -= disaster.damage;

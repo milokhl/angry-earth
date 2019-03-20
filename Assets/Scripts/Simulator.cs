@@ -31,6 +31,7 @@ public class Simulator : MonoBehaviour
     // Store the buildings that have been unlocked.
     private List<Building> buildingTypes = new List<Building>() {
         new Settlement(),
+        new Farm(),
         new House(),
         new Trash(),
         new Factory(),
@@ -42,10 +43,12 @@ public class Simulator : MonoBehaviour
         false,
         false,
         false,
+        false,
         false
     };
 
     private Dictionary<Type, Building> buildingUpgradeMap = new Dictionary<Type, Building> {
+        {typeof(Farm), new Settlement()},
         {typeof(Settlement), new House()},
         {typeof(House), new Factory()},
         {typeof(Factory), new Skyscraper()}
@@ -53,9 +56,10 @@ public class Simulator : MonoBehaviour
 
     private List<int> upgradeIndex = new List<int>() {
         1, // 0 --> 1
-        3, // 1 --> 3
+        2, // 1 --> 2
+        4, // 2 --> 4
         -1, // Trash doesn't upgrade
-        4,
+        5, // Factory --> Skyscraper
         -1 // Skyscraper doesn't upgrade
     };
 
