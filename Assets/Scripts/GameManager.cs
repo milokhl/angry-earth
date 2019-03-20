@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     // Game mode switches.
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject disasterPrefab;
     public GameObject nukePrefab;
+    public GameObject textPrefab;
     
     // Player state.
     // The currently clicked disaster type.
@@ -69,6 +71,16 @@ public class GameManager : MonoBehaviour {
         return camera.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x, Input.mousePosition.y, camera.nearClipPlane));
     }
+
+    // public void PlaceFeedbackText(int i)
+    // {
+    //     Transform tileTransform = tiles_[i].transform;
+    //     Canvas canvas = GameObject.Find("Canvas");
+    //     Text feedback = (Text)Instantiate(textPrefab, tileTransform.position, tileTransform.rotation);
+    //     feedback.transform.SetParent(canvas.transform, false);
+    //     feedback.fontSize = 14;
+    //     feedback.text = "asdlfkjsdfkj";
+    // }
 
     public void Update()
     {

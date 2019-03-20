@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour {
     public Building building = new Building();
     private bool isHighlighted = false;
     private Behaviour halo = null;
-
+    
     // Start is called before the first frame update
     void Start()
     {
