@@ -30,7 +30,7 @@ public class Farm : Building
         xpGain = 0.5f;
         health = 2.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
-        populationPct = 0.01f;
+        populationPct = 0.02f;
         technologyPct = 0.1f;
     }
 }
@@ -42,7 +42,7 @@ public class Settlement : Building
         xpGain = 0.5f;
         health = 1.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1800;
-        populationPct = 0.02f;
+        populationPct = 0.03f;
         technologyPct = 0.2f;
     }
 }
@@ -55,7 +55,7 @@ public class House : Building
         health = 3.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1850;
         populationPct = 0.05f;
-        technologyPct = 0.4f;
+        technologyPct = 0.1f;
     }
 }
 
@@ -78,8 +78,8 @@ public class Factory : Building
         xpGain = 3.0f;
         health = 6.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1900;
-        populationPct = 0.01f;
-        technologyPct = 3.0f;
+        populationPct = 0.005f;
+        technologyPct = 5.0f;
     }
 }
 
@@ -91,6 +91,6 @@ public class Skyscraper : Building
         health = 10.0f * BASE_HEALTH_UNIT;
         unlockedYear = 1980;
         populationPct = 0.1f;
-        technologyPct = 1.0f;
+        technologyPct = 3.0f;
     }
 }
