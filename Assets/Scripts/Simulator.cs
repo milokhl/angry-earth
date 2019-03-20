@@ -195,8 +195,7 @@ public class Simulator : MonoBehaviour
         double populationReadable = Math.Round((double)population / 1e9, 3);
 
         populationMeter.text = "Year: " + currentYear +
-                        "\nPopulation: " + populationReadable + " billion" +
-                        "\nTechnology: " + techLvl;
+                        "\nPopulation: " + populationReadable + " billion";
 
         if (techLvl >= gameoverTechLvl) {
             OnGameOver();
